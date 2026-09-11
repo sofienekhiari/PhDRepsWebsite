@@ -997,7 +997,29 @@ class Component extends DCLogic {
   // docs/images/ and are served from the site, so keep them under about 200 KB,
   // and never add one without alt text.
   POSTS = [
-    // { url: 'https://www.linkedin.com/feed/update/urn:li:activity:...', title: '...' }
+    // Links are stored without their query string: the share parameters LinkedIn
+    // appends carry an account-identifying token, which has no business in a
+    // public repository. Dates are decoded from the identifier, never typed.
+    { url: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_phdcareers-lifesciences-careerdevelopment-ugcPost-7479881800501313536-rskz',
+      title: 'Careers' },
+    { url: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_phz-x-swiss-tph-phd-symposium-one-week-activity-7456280781481680896-wPR6',
+      title: 'PHZ x Swiss TPH PhD Symposium, one week to go' },
+    { url: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_late-christmas-wishes-and-a-happy-new-year-activity-7410968721864724482-Tyy1',
+      title: 'Late Christmas wishes, and a happy new year' },
+    { url: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_novartis-hosted-the-last-industry-day-of-activity-7407749593016315904-e9RZ',
+      title: 'Novartis hosted the last Industry Day' },
+    { url: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_christmas-ap%C3%A9ro-hand-in-hand-with-the-first-activity-7406283529518526464-3Sv5',
+      title: 'Christmas Apéro' },
+    { url: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_industry-day-2025-bridging-academia-and-industry-activity-7392483897604841472-_wGn',
+      title: 'Industry Day 2025, bridging academia and industry' },
+    { url: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_leadership-careerdevelopment-lifesciences-activity-7387430007389913088-L7d0',
+      title: 'Leadership and career development' },
+    { url: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_pharma-x-chemistry-symposium-two-weeks-activity-7381273055475625984-7t09',
+      title: 'Pharma x Chemistry Symposium, two weeks to go' },
+    { url: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_last-week-i-had-the-chance-to-host-pharmap%C3%A9ro2025-activity-7379050677085573120-uNJX',
+      title: 'Pharm Apéro 2025' },
+    { url: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_phdretreat-biozentrum-pharmazentrum-activity-7372265581418536960-WuZr',
+      title: 'PhD Retreat 2025' }
   ];
 
   // The news feed of the shared site, kept because nothing else holds it now.
@@ -1065,7 +1087,7 @@ class Component extends DCLogic {
   long(iso) { return this.d(iso).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); }
 
   postDate(url) {
-    const found = /activity[:-](\d{15,25})/.exec(url);
+    const found = /(?:activity|ugcPost)[:-](\d{15,25})/.exec(url);
     if (!found) return null;
     const id = BigInt(found[1]);
     return new Date(Number(id >> BigInt(id.toString(2).length - 41)));
