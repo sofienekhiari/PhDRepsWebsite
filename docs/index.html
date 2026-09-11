@@ -74,19 +74,19 @@
     </div>
     <div style="flex:1 1 420px;animation:lift 800ms 120ms cubic-bezier(.2,.7,.2,1) both">
       <div style="background:var(--white);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:clamp(22px,2.4vw,30px);max-width:440px;margin-left:auto">
-        <span style="display:block;font-weight:700;font-size:16px;color:var(--deep)">What runs all year</span>
-        <span style="display:block;font-size:14px;color:var(--muted);margin-top:2px">Dates are announced by email, not fixed ahead</span>
-        <sc-for list="{{ heroStanding }}" as="ev" hint-placeholder-count="4">
+        <span style="display:block;font-weight:700;font-size:16px;color:var(--deep)">Recently</span>
+        <span style="display:block;font-size:14px;color:var(--muted);margin-top:2px">The last four we have on record</span>
+        <sc-for list="{{ heroPast }}" as="ev" hint-placeholder-count="4">
           <a href="{{ ev.route }}" style="display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:var(--r-md);padding:15px 18px;margin-top:12px;text-decoration:none;color:var(--ink);transition:border-color 160ms ease,background 160ms ease" style-hover="border-color:var(--accent-light);background:var(--pale)">
             <span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;flex:none;background:{{ ev.color }}"></span>
             <span style="flex:1">
               <span style="display:block;font-weight:600;font-size:15.5px">{{ ev.title }}</span>
-              <span style="display:block;font-size:13.5px;color:var(--muted)">{{ ev.cadence }}</span>
+              <span style="display:block;font-size:13.5px;color:var(--muted)">{{ ev.dayMonth }} {{ ev.yearLabel }}</span>
             </span>
             <span aria-hidden="true" style="color:var(--faint)">→</span>
           </a>
         </sc-for>
-        <a href="#/events" style="display:flex;align-items:center;justify-content:center;padding:17px;margin-top:14px;background:var(--deep);color:#fff;border-radius:var(--r-md);font-weight:600;font-size:15.5px;text-decoration:none" style-hover="background:var(--deep-2)">Everything we run</a>
+        <a href="#/events" style="display:flex;align-items:center;justify-content:center;padding:17px;margin-top:14px;background:var(--deep);color:#fff;border-radius:var(--r-md);font-weight:600;font-size:15.5px;text-decoration:none" style-hover="background:var(--deep-2)">The whole calendar</a>
       </div>
     </div>
   </header>
@@ -1113,7 +1113,7 @@ class Component extends DCLogic {
       leadTime: lead ? lead.time : '', leadPlace: lead ? lead.place : '', leadRoute: lead ? lead.route : '#/events',
       heroSecondary: upcoming.slice(1, 4),
 
-      standing, heroStanding: standing.slice(0, 4),
+      standing, heroPast: past.slice(0, 4),
       homeUpcoming: upcoming.slice(0, 4), hasUpcoming: upcoming.length > 0,
       homeNews: this.NEWS.slice(0, 3).map((n) => Object.assign({}, n, {
         dateLabel: this.dayMonth(n.date) + ' ' + this.d(n.date).getFullYear(),
