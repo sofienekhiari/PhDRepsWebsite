@@ -189,6 +189,27 @@ site writes the complete address so the link works. And the old past-retreats
 page put a group photograph under its "thank you to our 2023 sponsors" heading
 rather than a sponsor wall, so that picture is captioned for what it shows.
 
+**Every photograph was opened and described from the picture, not the file name.**
+That audit is worth not repeating, and worth not undoing. It found that the old
+home page illustrated its general description of the retreat with what is in fact
+the 2023 group photograph outside the Hotel Sunstar in Davos, which is also the
+picture under its own 2023 heading, so it now appears once, dated. It found that
+`IMG_6223` is Sofiene at his own poster and `IMG_6224` is Victoria Susan at hers,
+that `IMG_5622` is the sponsors' goodie bag and `IMG_5827` a Merck stand, none of
+which is the building its caption first claimed. And it found that the 2026
+registration poster carries two things written down nowhere else on that site:
+the venue's town, Locarno-Muralto, and the three keynote speakers, Mamta Chabria,
+Zuzanna Kozicka and Stefan Siegrist. Both are now on the page as text.
+
+Each sponsor wall belongs to one year and they do not overlap: 2026 is the tiered
+wall, 2025 is the screenshot, 2024 its own file, and 2023 is the board the group
+is holding in its photograph. Merck and Macherey-Nagel appear twice in 2026
+because they sponsor both in cash and in kind, exactly as the old site showed them.
+
+One claim was deliberately not carried over: the old registration page said the
+retreat takes place "in the early summer months", which the last three editions
+(late August, September, September) contradict.
+
 If anything else on the old site turns out to be missing here, it is a defect
 rather than an editorial choice, because the original will soon be gone.
 
