@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.1",
+  "round": "round-02",
+  "mechanism": "inline",
+  "mechanismNote": "Inline mechanism per D203/D204. Raised 2026-09-11 when he asked how the website could carry the latest posts and photographs. Graded load-bearing, so the D221 blind framing test ran: it read the first draft of the options with labels stripped and order shuffled and correctly identified a lean towards the option that became 4, quoting the wording that leaked it. The options below are the rewritten, even set that was actually put to him. The D281 missing-option pass was stopped part way, because he supplied the missing option himself (embedding LinkedIn posts, which became option 2).",
+  "revision": 1,
+  "updated": "2026-09-11T13:00:00.000Z",
+  "handedBack": false,
+  "readback": "D2 answered by bare option number, so no D282 read-back was required.",
+  "claims": [],
+  "codeReview": "",
+  "outputReview": "",
+  "finalComments": "Scope narrowed before the ruling: Instagram was dropped at his instruction, so this covers the LinkedIn company page only. Consequence he was told twice and accepted by ruling: the photographs are hosted publicly from the repository and show identifiable people, so a consent position is still owed. A correction was issued before the ruling: the case against option 4 said every post would be copied by hand, which was wrong, because the import is re-runnable.",
+  "answers": {
+    "D2": {
+      "question": "The site's news page is an index of outward links carrying no post text and no images. The representatives' LinkedIn company page holds about twenty posts with their text and photographs. What form should those posts take on the website?",
+      "choice": "4",
+      "label": "The posts on the page",
+      "other": "",
+      "why": "",
+      "endorsed": true,
+      "options": [
+        {
+          "label": "Index with a thumbnail",
+          "text": "Each entry keeps its title, date and link out, and gains one image.",
+          "for": "One new field per entry, and no post text or photograph is copied onto the site.",
+          "against": "A reader leaves the site to read anything, and an entry stops working if its post is removed."
+        },
+        {
+          "label": "Embedded LinkedIn posts",
+          "text": "Each entry is LinkedIn's own embed, rendering the post inside the page.",
+          "for": "Nothing is copied or hosted, and an edited post updates itself.",
+          "against": "The official embed is per post rather than a live feed, so each is still added by hand; the embeds are third-party frames, which carries cookie and tracking implications for a university site; and they will not render in the artifact preview."
+        },
+        {
+          "label": "Photographs in their own section",
+          "text": "Photographs grouped by event, with the news index left as it is.",
+          "for": "The photographs get a layout sized for them rather than a list row.",
+          "against": "Two places to keep current instead of one, and the images are hosted from the repository."
+        },
+        {
+          "label": "The posts on the page",
+          "text": "Photograph, text and date rendered by the site itself.",
+          "for": "No third party involved and no outward click.",
+          "against": "The images are hosted from the repository, each needs alternative text and a consent position, and every post is added through an import rather than by the platform."
+        }
+      ]
+    }
+  }
+}
