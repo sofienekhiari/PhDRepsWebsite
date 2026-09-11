@@ -163,15 +163,15 @@ Ranked by how much damage each does if it ships as is. Line numbers are
    read-only, and the component hardcodes `alt=""` with no way to set it.
    Replacing them with plain `<img>` tags and real files is the right move, and
    it is a decision rather than a chore.
-2. **Accessibility.** Several declared colours fail WCAG AA: `--muted` #86a0a9 is
-   2.76:1 on white and is used for cadences, places and group names; `--faint`
-   #b7c9cf is 1.71:1; `--teal` #2a8f98 is 3.83:1 and is the background of every
-   primary button with white text at 14.5 to 15.5 px. Section labels are `<span>`
-   rather than headings, so the visual hierarchy is invisible to a screen reader,
-   and the three board members sit at `<h2>` alongside the section holding the
-   other eighteen. The alumni toggle has no `aria-expanded`. There is no
-   `prefers-reduced-motion` guard on the `lift` animation (line 43) or the global
-   smooth scrolling (line 28). The `lang` attribute is now set.
+2. **Accessibility.** Colour contrast is fixed: the palette replaced in
+   September 2026 was measured, and every series ink carries white text at 5:1 or
+   better while `--body` and `--muted` clear 4.5:1 on the paper ground. `--faint`
+   #868d9c is 3.03:1 and is decorative only. The `lang` attribute is set. What is
+   left is structural: section labels are `<span>` rather than headings, so the
+   visual hierarchy is invisible to a screen reader, and the three board members
+   sit at `<h2>` alongside the section holding the other eighteen; the alumni
+   toggle has no `aria-expanded`; and there is no `prefers-reduced-motion` guard
+   on the `lift` animation (line 43) or the global smooth scrolling (line 28).
 3. **Client-render fragility.** `support.js` hides the template before it fetches
    React. If unpkg is blocked, the visitor gets a blank white page with no
    message; if `support.js` itself fails to load, they get raw markup full of
@@ -265,6 +265,13 @@ python3 build-artifact.py        # regenerates artifact/index.html from docs/
 
 Then republish `artifact/index.html`, passing `docs/support.js` and
 `docs/image-slot.js` as the supporting files.
+
+**The palette lives in one place.** The `:root` block at the top of
+`docs/index.html` holds every colour, named by role (`--accent`, `--deep`,
+`--body`) rather than by hue, so a swap is a one-line edit. The two categorical
+sets, `PALETTE` and `SERIES_COLOR`, are the exception and sit with the data:
+seven flat inks, each measured to carry white text at 5:1 or better. Keep that
+property if you change one.
 
 **`docs/index.html` is the source.** `artifact/index.html` is generated and is
 never hand-edited: an edit made there is lost at the next build. The build strips
