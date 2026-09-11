@@ -19,13 +19,13 @@ window.__resources = {
 <style>
   :root {
     --bg: #f5f4f1; --white: #ffffff; --pale: #eceae6;
-    --deep: #1c1e2a; --deep-2: #2a2d3d; --ink: #1a1b23;
-    --accent: #3b4a9e; --accent-dark: #2e3a7d; --accent-light: #a8b3f2; --accent-pale: #e4e6f6;
+    --deep: #2a2d3c; --deep-2: #383c4f; --ink: #1a1b23;
+    --accent: #4a5bbc; --accent-dark: #3b4a9e; --accent-light: #a8b3f2; --accent-pale: #e4e6f6;
     --body: #4a4d59; --muted: #6b6f7c; --faint: #868d9c;
     --line: #e2e0db; --line-2: #edebe7;
     --sans: "Figtree", "Helvetica Neue", Arial, sans-serif;
     --r-lg: 28px; --r-md: 18px; --r-sm: 12px;
-    --shadow: 0 18px 50px rgba(28,30,42,0.10); --shadow-sm: 0 6px 22px rgba(28,30,42,0.07);
+    --shadow: 0 18px 50px rgba(42,45,60,0.10); --shadow-sm: 0 6px 22px rgba(42,45,60,0.07);
   }
   html { scroll-behavior: smooth; background: var(--bg); }
   body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans);
@@ -721,14 +721,14 @@ class Component extends DCLogic {
   // seven flat inks, ordered so that two cards next to each other never share a hue.
   // Every one carries white text at 5:1 or better, which is what lets the same set
   // serve as avatar grounds and as series badges.
-  PALETTE = ['#3b4a9e', '#b0502a', '#2c6b42', '#71409b', '#12716f', '#b02a3f', '#96650f'];
+  PALETTE = ['#5d6cc3', '#ba542c', '#358150', '#8f5cbb', '#14807e', '#d03a52', '#9b6810'];
 
   // one ink per series, so the colour actually tells you which thing you are looking at
   SERIES_COLOR = {
-    'Science Lunch': '#b0502a', 'Lunch Lottery': '#96650f', 'Social': '#2c6b42',
-    'PhD Retreat': '#3b4a9e', 'Career': '#71409b', 'Seminar': '#12716f', 'Merchandise': '#b02a3f'
+    'Science Lunch': '#ba542c', 'Lunch Lottery': '#9b6810', 'Social': '#358150',
+    'PhD Retreat': '#5d6cc3', 'Career': '#8f5cbb', 'Seminar': '#14807e', 'Merchandise': '#d03a52'
   };
-  SOURCE_COLOR = { Instagram: '#b02a3f', LinkedIn: '#3b4a9e', Site: '#4a4d59' };
+  SOURCE_COLOR = { Instagram: '#d03a52', LinkedIn: '#5d6cc3', Site: '#6b6f7c' };
 
   // Board and assembly as published on the shared site, headed “Spring 2025 / Board
   // members 2024”. Only the three board addresses are published there; the delegates
@@ -1031,7 +1031,7 @@ class Component extends DCLogic {
     const d = this.d(ev.date);
     return Object.assign({}, ev, {
       route: '#/events/' + ev.id,
-      color: this.SERIES_COLOR[ev.series] || '#3b4a9e',
+      color: this.SERIES_COLOR[ev.series] || '#5d6cc3',
       dayNum: String(d.getDate()),
       monthShort: d.toLocaleDateString('en-GB', { month: 'short' }),
       dayMonth: this.dayMonth(ev.date),
@@ -1045,7 +1045,7 @@ class Component extends DCLogic {
   decorateStanding(a) {
     return Object.assign({}, a, {
       route: '#/events/' + a.id,
-      color: this.SERIES_COLOR[a.series] || '#3b4a9e',
+      color: this.SERIES_COLOR[a.series] || '#5d6cc3',
       recurring: true,
       dateShort: a.cadence, dayMonth: a.cadence, whenLabel: a.cadence, time: '',
       provisional: false,
@@ -1119,11 +1119,11 @@ class Component extends DCLogic {
       homeUpcoming: upcoming.slice(0, 4), hasUpcoming: upcoming.length > 0,
       homeNews: this.NEWS.slice(0, 3).map((n) => Object.assign({}, n, {
         dateLabel: this.dayMonth(n.date) + ' ' + this.d(n.date).getFullYear(),
-        color: this.SOURCE_COLOR[n.source] || '#3b4a9e'
+        color: this.SOURCE_COLOR[n.source] || '#5d6cc3'
       })),
       news: this.NEWS.map((n) => Object.assign({}, n, {
         dateLabel: this.long(n.date).replace(/^\w+, /, ''),
-        color: this.SOURCE_COLOR[n.source] || '#3b4a9e'
+        color: this.SOURCE_COLOR[n.source] || '#5d6cc3'
       })),
 
       whenChips: [
