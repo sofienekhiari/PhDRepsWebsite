@@ -237,6 +237,48 @@ inventing one.
   design tool. This is the largest fork in the project and it has not been
   decided.
 
+## How Sofiene wants to work on this
+
+Ruled 11 September 2026. There are two channels, and they are for different sizes
+of change.
+
+**Comments on the artifact, for a specific edit.** The site is published as a
+Claude Artifact at
+<https://claude.ai/code/artifact/24c45dd7-a3e3-4097-91df-9bdc24a3e984>. He reads
+the page there and comments on the thing he wants changed, which is faster than
+describing where it is. A comment only reaches a running session if he sends it
+to Claude from the thread; a plain comment sits there silently until someone
+reads it with the artifact tool's `comments` action.
+
+**Chat, for a bigger change.** Anything someone else has asked him to do, or a
+change that touches the structure rather than the wording, he says here instead.
+
+**What happens on either.** Edit `docs/index.html`, rebuild the artifact,
+republish it to the same URL, commit, and push. That is the whole loop and it is
+not something to check back about each time: he has asked for it as the standing
+routine. Reply on the comment thread saying what changed and resolve it, so the
+page shows what was acted on.
+
+```
+python3 build-artifact.py        # regenerates artifact/index.html from docs/
+```
+
+Then republish `artifact/index.html`, passing `docs/support.js` and
+`docs/image-slot.js` as the supporting files.
+
+**`docs/index.html` is the source.** `artifact/index.html` is generated and is
+never hand-edited: an edit made there is lost at the next build. The build strips
+the document wrapper the artifact host supplies itself, and prepends a
+`window.__resources` map that redirects the runtime's React loads from unpkg,
+which the artifact content security policy blocks, to cdnjs, which it allows.
+Without that map the artifact is a blank white page with nothing in the console,
+because the runtime hides the template before it fetches React.
+
+**The live subscription is session-local.** The session that publishes the
+artifact is notified when it is republished elsewhere and when a comment is sent
+to Claude, and that dies with the session. In a fresh session either he pastes
+the artifact link, or the artifact is republished, before comments reach anyone.
+
 ## Working in this repository
 
 - The design lives in Claude Design project `473998c6-788d-40f2-864b-26e900bdb3a5`,

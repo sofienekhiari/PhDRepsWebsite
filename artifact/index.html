@@ -1,0 +1,1185 @@
+<title>PhD Reps Pharmazentrum</title>
+<script>
+window.__resources = {
+  "https://unpkg.com/react@18.3.1/umd/react.production.min.js":
+    "https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js",
+  "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":
+    "https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"
+};
+</script>
+<script src="support.js"></script>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PhD Representatives · Pharmazentrum · Universität Basel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" />
+<script src="image-slot.js"></script>
+<style>
+  :root {
+    --bg: #f1f6f7; --white: #ffffff; --pale: #edf3f3;
+    --navy: #06303d; --navy-2: #0a3f4f; --ink: #0a2e3a;
+    --teal: #2a8f98; --teal-dark: #21757d; --teal-light: #7cc2c4; --teal-pale: #dcebec;
+    --body: #5f7883; --muted: #86a0a9; --faint: #b7c9cf;
+    --line: #e0eaec; --line-2: #eaf1f2;
+    --sans: "Figtree", "Helvetica Neue", Arial, sans-serif;
+    --r-lg: 28px; --r-md: 18px; --r-sm: 12px;
+    --shadow: 0 18px 50px rgba(6,48,61,0.08); --shadow-sm: 0 6px 22px rgba(6,48,61,0.06);
+  }
+  html { scroll-behavior: smooth; background: var(--bg); }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans);
+    font-size: 16px; line-height: 1.6; text-wrap: pretty; -webkit-font-smoothing: antialiased; }
+  a:link, a:visited { color: var(--teal-dark); text-underline-offset: 3px; }
+  a:hover { color: var(--teal); }
+  ::selection { background: var(--teal-pale); color: var(--navy); }
+  ::placeholder { color: var(--faint); opacity: 1; }
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+  input, button { font-family: inherit; }
+  nav a[aria-current="page"] { color: var(--teal-dark) !important; }
+  button[aria-pressed] { cursor: pointer; font-weight: 600; font-size: 13px; line-height: 1;
+    padding: 11px 16px; border-radius: 999px; background: var(--white);
+    color: var(--body); border: 1px solid var(--line); transition: all 150ms ease; }
+  button[aria-pressed]:hover { border-color: var(--teal-light); color: var(--ink); }
+  button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+  @keyframes lift { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+
+<nav style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:flex-end;gap:10px 20px;flex-wrap:wrap;padding:16px clamp(18px,4vw,56px);background:rgba(241,246,247,0.9);backdrop-filter:blur(14px)">
+  <a href="#/" style="display:flex;align-items:center;gap:11px;margin-right:auto;text-decoration:none;color:var(--navy)">
+    <span aria-hidden="true" style="display:flex;flex:none;width:34px;height:34px;border-radius:10px;background:var(--navy);align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;letter-spacing:-0.03em">Ph</span>
+    <span style="font-weight:700;font-size:21px;letter-spacing:-0.03em;white-space:nowrap">PhD Reps</span>
+    <span style="font-weight:500;font-size:13px;color:var(--muted);white-space:nowrap;padding-top:2px">Pharmazentrum</span>
+  </a>
+  <a href="#/events" aria-current="{{ navEvents }}" style="font-weight:500;font-size:15px;color:var(--body);text-decoration:none;white-space:nowrap" style-hover="color:var(--navy)">Events</a>
+  <a href="#/people" aria-current="{{ navPeople }}" style="font-weight:500;font-size:15px;color:var(--body);text-decoration:none;white-space:nowrap" style-hover="color:var(--navy)">Your reps</a>
+  <a href="#/news" aria-current="{{ navNews }}" style="font-weight:500;font-size:15px;color:var(--body);text-decoration:none;white-space:nowrap" style-hover="color:var(--navy)">News</a>
+  <a href="#/resources" aria-current="{{ navResources }}" style="font-weight:500;font-size:15px;color:var(--body);text-decoration:none;white-space:nowrap" style-hover="color:var(--navy)">Resources</a>
+  <a href="#/merch" aria-current="{{ navMerch }}" style="font-weight:500;font-size:15px;color:var(--body);text-decoration:none;white-space:nowrap" style-hover="color:var(--navy)">Merch</a>
+  <a href="{{ listHref }}" style="display:inline-flex;align-items:center;padding:12px 24px;border-radius:999px;background:var(--teal);color:#fff;font-weight:600;font-size:14.5px;text-decoration:none;white-space:nowrap" style-hover="background:var(--teal-dark)">Get the emails</a>
+</nav>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,56px)">
+
+  <sc-if value="{{ homeStatement }}" hint-placeholder-val="{{ true }}">
+  <header style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(40px,6vw,88px) 0 clamp(40px,5vw,72px)">
+    <div style="flex:1 1 440px;animation:lift 700ms cubic-bezier(.2,.7,.2,1) both">
+      <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:22px">PhD Representatives · Pharmazentrum</span>
+      <h1 style="font-weight:700;font-size:clamp(42px,6.4vw,86px);line-height:1.02;letter-spacing:-0.04em;margin:0;color:var(--navy);max-width:16ch">You’re not doing your PhD alone.</h1>
+      <p style="font-size:clamp(17px,1.4vw,19px);line-height:1.62;max-width:47ch;margin:26px 0 0;color:var(--body)">{{ repCount }} PhD representatives of the Pharmazentrum: a board of {{ boardCount }} and an assembly of {{ delegateCount }} delegates from {{ groupCount }} research groups. We run the Science Lunch, the Lunch Lottery and the retreat with the Biozentrum, and we are the people to tell when something isn’t working.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:34px">
+        <a href="{{ listHref }}" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:var(--teal);color:#fff;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none" style-hover="background:var(--teal-dark)">Get the announcements <span aria-hidden="true">↗</span></a>
+        <a href="#/events" style="display:inline-flex;align-items:center;padding:14px 26px;border:1px solid var(--line);color:var(--navy);border-radius:999px;font-weight:600;font-size:15px;text-decoration:none" style-hover="border-color:var(--teal-light)">What we run</a>
+      </div>
+      <p style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin:40px 0 14px">We keep a contact person for</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px 32px;align-items:center">
+        <sc-for list="{{ heroLogos }}" as="l" hint-placeholder-count="3">
+          <span style="font-weight:700;font-size:16px;letter-spacing:-0.02em;color:var(--muted)">{{ l }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="flex:1 1 420px;position:relative;min-height:400px;animation:lift 800ms 120ms cubic-bezier(.2,.7,.2,1) both">
+      <div style="background:var(--white);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:clamp(22px,2.4vw,30px);max-width:440px;margin-left:auto">
+        <span style="display:block;font-weight:700;font-size:16px;color:var(--navy)">What runs all year</span>
+        <span style="display:block;font-size:14px;color:var(--muted);margin-top:2px">Dates are announced by email, not fixed ahead</span>
+        <sc-for list="{{ heroStanding }}" as="ev" hint-placeholder-count="4">
+          <a href="{{ ev.route }}" style="display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:var(--r-md);padding:15px 18px;margin-top:12px;text-decoration:none;color:var(--ink);transition:border-color 160ms ease,background 160ms ease" style-hover="border-color:var(--teal-light);background:var(--pale)">
+            <span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;flex:none;background:{{ ev.color }}"></span>
+            <span style="flex:1">
+              <span style="display:block;font-weight:600;font-size:15.5px">{{ ev.title }}</span>
+              <span style="display:block;font-size:13.5px;color:var(--muted)">{{ ev.cadence }}</span>
+            </span>
+            <span aria-hidden="true" style="color:var(--faint)">→</span>
+          </a>
+        </sc-for>
+        <a href="#/events" style="display:flex;align-items:center;justify-content:center;padding:17px;margin-top:14px;background:var(--navy);color:#fff;border-radius:var(--r-md);font-weight:600;font-size:15.5px;text-decoration:none" style-hover="background:var(--navy-2)">Everything we run</a>
+      </div>
+      <div aria-hidden="true" style="position:absolute;top:-14px;right:-6px;width:196px;background:var(--teal);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);z-index:2">
+        <div style="padding:20px 20px 26px;color:#fff">
+          <span style="display:block;font-size:13px;opacity:0.85">Representatives</span>
+          <span style="display:block;font-weight:800;font-size:56px;line-height:1;letter-spacing:-0.04em;margin-top:6px">{{ repCount }}</span>
+        </div>
+        <div style="background:var(--navy);padding:16px 20px;color:#fff;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-weight:700;font-size:14px;letter-spacing:0.02em">{{ groupCount }} research groups</span>
+          <span style="font-size:13px;opacity:0.7">one assembly</span>
+        </div>
+      </div>
+    </div>
+  </header>
+  </sc-if>
+
+  <sc-if value="{{ homeEventFirst }}">
+  <header style="padding:clamp(36px,5vw,72px) 0 clamp(36px,4.5vw,64px)">
+    <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:24px">Next up · {{ leadSeries }}</span>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,2.5vw,32px);align-items:stretch;animation:lift 700ms cubic-bezier(.2,.7,.2,1) both">
+      <div style="flex:1 1 480px;background:var(--navy);border-radius:var(--r-lg);padding:clamp(28px,4vw,52px);color:#fff;display:flex;flex-wrap:wrap;gap:clamp(24px,3.5vw,48px);align-items:flex-start">
+        <div style="flex:0 0 auto">
+          <span style="display:block;font-weight:800;font-size:clamp(74px,9vw,124px);line-height:0.9;letter-spacing:-0.05em;color:var(--teal-light)">{{ leadDay }}</span>
+          <span style="display:block;margin-top:14px;font-weight:600;font-size:15px;opacity:0.9">{{ leadMonthYear }}</span>
+          <span style="display:block;margin-top:3px;font-size:14.5px;opacity:0.6">{{ leadWeekday }} · {{ leadTime }}</span>
+        </div>
+        <div style="flex:1 1 250px">
+          <h1 style="font-weight:700;font-size:clamp(32px,4.2vw,54px);line-height:1.04;letter-spacing:-0.035em;margin:0;text-wrap:balance">{{ leadTitle }}</h1>
+          <p style="font-size:16.5px;line-height:1.62;max-width:44ch;margin:18px 0 0;opacity:0.82">{{ leadBlurb }}</p>
+          <p style="font-size:14.5px;margin:14px 0 0;opacity:0.6">{{ leadPlace }}</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:28px">
+            <a href="{{ leadRoute }}" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--teal);color:#fff;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none" style-hover="background:var(--teal-dark)">Details &amp; sign-up <span aria-hidden="true">↗</span></a>
+            <a href="#/events" style="display:inline-flex;align-items:center;padding:14px 24px;border:1px solid rgba(255,255,255,0.28);color:#fff;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none" style-hover="border-color:#fff">The whole term</a>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1 1 260px;display:flex;flex-direction:column;gap:14px">
+        <sc-for list="{{ heroSecondary }}" as="ev" hint-placeholder-count="3">
+          <a href="{{ ev.route }}" style="flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:110px;background:var(--white);border-radius:var(--r-md);padding:20px 22px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow-sm);transition:transform 160ms ease" style-hover="transform:translateY(-3px)">
+            <span style="display:flex;align-items:center;gap:9px;font-weight:600;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted)">
+              <span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;flex:none;background:{{ ev.color }}"></span>
+              {{ ev.series }}
+            </span>
+            <span>
+              <span style="display:block;font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.025em">{{ ev.title }}</span>
+              <span style="display:block;margin-top:4px;font-size:14px;color:var(--muted)">{{ ev.dayMonth }} · {{ ev.time }}</span>
+            </span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </header>
+  </sc-if>
+
+  <section style="background:var(--white);border-radius:var(--r-lg);padding:clamp(30px,4.5vw,72px);box-shadow:var(--shadow-sm)">
+    <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:22px">What we do</span>
+    <div style="display:flex;flex-wrap:wrap;gap:24px clamp(32px,5vw,80px);align-items:flex-start">
+      <h2 style="flex:1 1 380px;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:1.06;letter-spacing:-0.035em;margin:0;color:var(--navy);max-width:20ch">Three jobs, and we take all of them seriously.</h2>
+      <p style="flex:1 1 300px;font-size:17px;line-height:1.66;margin:0;max-width:40ch;color:var(--body)">Representation on the bodies that decide things, a calendar that gets the department into the same room, and a treasury that carries the costs.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:36px clamp(28px,4vw,64px);margin-top:clamp(36px,5vw,72px)">
+      <div>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9.5" cy="7" r="3.5"></circle><path d="M22 20v-2a4 4 0 0 0-3-3.87M16.5 3.6a4 4 0 0 1 0 6.8"></path></svg>
+        <h3 style="font-weight:700;font-size:23px;line-height:1.2;letter-spacing:-0.028em;margin:22px 0 0;color:var(--navy)">We sit in the room</h3>
+        <p style="font-size:16px;line-height:1.7;margin:12px 0 0;color:var(--body)">Two delegates hold the department deputy role, and the assembly keeps a named contact person for the Biozentrum, D-BSSE, the DBM, the Tropeninstitut and Chemistry. If something about your PhD is broken, there is a route for raising it that does not start with your supervisor.</p>
+      </div>
+      <div>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path><circle cx="12" cy="15" r="1.6" fill="var(--teal)" stroke="none"></circle></svg>
+        <h3 style="font-weight:700;font-size:23px;line-height:1.2;letter-spacing:-0.028em;margin:22px 0 0;color:var(--navy)">We make the calendar</h3>
+        <p style="font-size:16px;line-height:1.7;margin:12px 0 0;color:var(--body)">A Science Lunch every month, the Lunch Lottery, the summer BBQ, the Pharm Apéro, the Career Lecture Series with the Postdoc Club, and a two and a half day retreat with the Biozentrum. Free pizza is a serious pedagogical instrument.</p>
+      </div>
+      <div>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5.5A2.5 2.5 0 0 1 3 17.5z"></path><path d="M3 8.5V7a2 2 0 0 1 2-2h11"></path><circle cx="16.5" cy="12.5" r="1.4" fill="var(--teal)" stroke="none"></circle></svg>
+        <h3 style="font-weight:700;font-size:23px;line-height:1.2;letter-spacing:-0.028em;margin:22px 0 0;color:var(--navy)">We hold the purse</h3>
+        <p style="font-size:16px;line-height:1.7;margin:12px 0 0;color:var(--body)">Being represented costs you nothing, and so does almost everything we run: the Science Lunch feeds you, the Lunch Lottery raffles food vouchers, the Apéro and the BBQ are free. The hoodie you pay for yourself, at cost, and the retreat is ticketed and sponsored.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(48px,6vw,104px) 0 0">
+    <div style="text-align:center;max-width:640px;margin:0 auto">
+      <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:16px">The assembly</span>
+      <h2 style="font-weight:700;font-size:clamp(32px,4.2vw,56px);line-height:1.04;letter-spacing:-0.038em;margin:0;color:var(--navy)">{{ groupCount }} research groups, one assembly</h2>
+      <p style="font-size:17px;line-height:1.66;margin:18px 0 0;color:var(--body)">The assembly covers {{ groupCount }} research groups. Some send several delegates and some send one, so the person who understands your corridor may not be the one holding the portfolio you need.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:clamp(32px,4vw,56px)">
+      <div style="background:var(--pale);border-radius:var(--r-lg);padding:clamp(28px,3.5vw,44px);display:flex;flex-direction:column;justify-content:space-between;gap:36px;min-height:280px">
+        <span style="font-weight:800;font-size:clamp(64px,7vw,104px);line-height:0.86;letter-spacing:-0.05em;color:var(--teal)">21</span>
+        <span style="font-weight:700;font-size:clamp(22px,2.2vw,29px);line-height:1.16;letter-spacing:-0.03em;color:var(--navy);max-width:16ch">Delegates and board members</span>
+      </div>
+      <div style="background:var(--pale);border-radius:var(--r-lg);padding:clamp(28px,3.5vw,44px);display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:280px">
+        <span style="font-weight:700;font-size:clamp(22px,2.2vw,29px);line-height:1.18;letter-spacing:-0.03em;color:var(--navy);max-width:20ch">Raise something confidentially, any time</span>
+        <span style="display:flex;align-items:center;gap:16px">
+          <span aria-hidden="true" style="display:flex;width:60px;height:60px;border-radius:16px;background:var(--teal);align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px">You</span>
+          <span aria-hidden="true" style="flex:1;height:1px;background:var(--faint)"></span>
+          <span aria-hidden="true" style="display:flex;width:60px;height:60px;border-radius:50%;background:var(--navy);align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px">Dept.</span>
+        </span>
+        <a href="#/resources" style="font-weight:600;font-size:15px;text-decoration:none">How that works →</a>
+      </div>
+      <figure style="margin:0;border-radius:var(--r-lg);overflow:hidden;background:var(--pale);min-height:280px">
+        <image-slot id="v4-group-photo" shape="rect" style="width:100%;height:100%;min-height:280px" placeholder="Drop the current group photo here"></image-slot>
+      </figure>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:32px">
+      <a href="#/people" style="display:inline-flex;align-items:center;gap:10px;padding:15px 28px;background:var(--navy);color:#fff;border-radius:999px;font-weight:600;font-size:15.5px;text-decoration:none" style-hover="background:var(--navy-2)">Meet all {{ repCount }} <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <sc-if value="{{ hasUpcoming }}">
+  <section style="padding:clamp(48px,6vw,104px) 0 0">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,36px)">
+      <div>
+        <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:14px">Dated</span>
+        <h2 style="font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:1.06;letter-spacing:-0.035em;margin:0;color:var(--navy)">Coming up</h2>
+      </div>
+      <a href="#/events" style="font-weight:600;font-size:15.5px;text-decoration:none">The record →</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ homeUpcoming }}" as="ev" hint-placeholder-count="2">
+        <a href="{{ ev.route }}" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px 22px;align-items:center;background:var(--white);border-radius:var(--r-md);padding:18px 22px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow-sm);transition:transform 160ms ease" style-hover="transform:translateX(4px)">
+          <span style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:58px;height:58px;border-radius:14px;color:#fff;flex:none;background:{{ ev.color }}">
+            <span style="font-weight:800;font-size:21px;line-height:1;letter-spacing:-0.03em">{{ ev.dayNum }}</span>
+            <span style="font-weight:600;font-size:11px;letter-spacing:0.07em;text-transform:uppercase;margin-top:2px;opacity:0.9">{{ ev.monthShort }}</span>
+          </span>
+          <span>
+            <span style="display:block;font-weight:700;font-size:20px;line-height:1.2;letter-spacing:-0.028em">{{ ev.title }}</span>
+            <span style="display:block;margin-top:3px;font-size:14.5px;color:var(--muted)">{{ ev.metaLine }}</span>
+          </span>
+          <span aria-hidden="true" style="color:var(--faint);font-size:18px">→</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+
+  <section style="padding:clamp(48px,6vw,104px) 0 0">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,36px)">
+      <div>
+        <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:14px">All year</span>
+        <h2 style="font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:1.06;letter-spacing:-0.035em;margin:0;color:var(--navy)">What we run</h2>
+      </div>
+      <a href="#/events" style="font-weight:600;font-size:15.5px;text-decoration:none">All of it →</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ standing }}" as="ev" hint-placeholder-count="4">
+        <a href="{{ ev.route }}" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px 22px;align-items:center;background:var(--white);border-radius:var(--r-md);padding:18px 22px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow-sm);transition:transform 160ms ease" style-hover="transform:translateX(4px)">
+          <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:14px;color:#fff;flex:none;font-weight:800;font-size:13px;letter-spacing:0.04em;text-transform:uppercase;background:{{ ev.color }}">{{ ev.series }}</span>
+          <span>
+            <span style="display:block;font-weight:700;font-size:20px;line-height:1.2;letter-spacing:-0.028em">{{ ev.title }}</span>
+            <span style="display:block;margin-top:3px;font-size:14.5px;color:var(--muted)">{{ ev.cadence }}</span>
+          </span>
+          <span aria-hidden="true" style="color:var(--faint);font-size:18px">→</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="margin:clamp(48px,6vw,104px) 0 0;background:var(--navy);border-radius:var(--r-lg);padding:clamp(32px,5vw,80px);color:#fff">
+    <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal-light);margin-bottom:18px">How to reach us</span>
+    <h2 style="font-weight:700;font-size:clamp(30px,4vw,54px);line-height:1.04;letter-spacing:-0.038em;margin:0;max-width:22ch">Three ways in, none of them require a form.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:clamp(32px,4vw,56px)">
+      <div style="background:rgba(255,255,255,0.06);border-radius:var(--r-md);padding:28px 26px 30px">
+        <span aria-hidden="true" style="display:block;font-weight:800;font-size:64px;line-height:0.9;letter-spacing:-0.05em;color:rgba(255,255,255,0.22)">1</span>
+        <h3 style="font-weight:700;font-size:20px;letter-spacing:-0.025em;margin:20px 0 0">Come to something</h3>
+        <p style="font-size:15.5px;line-height:1.66;margin:10px 0 0;color:rgba(255,255,255,0.7)">Almost everything we run is open and free. The easiest first step is a Science Lunch, where nobody will ask you to introduce yourself.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border-radius:var(--r-md);padding:28px 26px 30px">
+        <span aria-hidden="true" style="display:block;font-weight:800;font-size:64px;line-height:0.9;letter-spacing:-0.05em;color:rgba(255,255,255,0.22)">2</span>
+        <h3 style="font-weight:700;font-size:20px;letter-spacing:-0.025em;margin:20px 0 0">Write to your delegate</h3>
+        <p style="font-size:15.5px;line-height:1.66;margin:10px 0 0;color:rgba(255,255,255,0.7)">Find the person from your research group, or the one holding the portfolio your question belongs to. The board addresses are on the reps page.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border-radius:var(--r-md);padding:28px 26px 30px">
+        <span aria-hidden="true" style="display:block;font-weight:800;font-size:64px;line-height:0.9;letter-spacing:-0.05em;color:rgba(255,255,255,0.22)">3</span>
+        <h3 style="font-weight:700;font-size:20px;letter-spacing:-0.025em;margin:20px 0 0">Go to a deputy</h3>
+        <p style="font-size:15.5px;line-height:1.66;margin:10px 0 0;color:rgba(255,255,255,0.7)">Two delegates hold the department deputy role. That is the route for anything you would rather not raise yourself.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(48px,6vw,104px) 0 0">
+    <div style="text-align:center;max-width:620px;margin:0 auto">
+      <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:16px">In a year</span>
+      <h2 style="font-weight:700;font-size:clamp(32px,4.2vw,56px);line-height:1.04;letter-spacing:-0.038em;margin:0;color:var(--navy)">What that adds up to</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:32px 20px;margin-top:clamp(32px,4vw,56px);text-align:center">
+      <sc-for list="{{ stats }}" as="st" hint-placeholder-count="4">
+        <div>
+          <span style="display:block;font-weight:800;font-size:clamp(40px,4.6vw,60px);line-height:1;letter-spacing:-0.04em;color:var(--navy)">{{ st.value }}</span>
+          <span style="display:block;margin-top:12px;font-size:16px;color:var(--body)">{{ st.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(48px,6vw,104px) 0 0">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,36px)">
+      <div>
+        <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:14px">Latest</span>
+        <h2 style="font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:1.06;letter-spacing:-0.035em;margin:0;color:var(--navy)">Recently posted</h2>
+      </div>
+      <a href="#/news" style="font-weight:600;font-size:15.5px;text-decoration:none">All news →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+      <sc-for list="{{ homeNews }}" as="n" hint-placeholder-count="3">
+        <a href="{{ n.href }}" target="_blank" rel="noopener" style="display:block;background:var(--white);border-radius:var(--r-lg);padding:26px 24px 28px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow-sm);transition:transform 160ms ease" style-hover="transform:translateY(-4px)">
+          <span style="display:inline-flex;align-items:center;padding:6px 13px;border-radius:999px;font-weight:600;font-size:12px;letter-spacing:0.07em;text-transform:uppercase;color:#fff;background:{{ n.color }}">{{ n.source }}</span>
+          <span style="display:block;margin-top:18px;font-weight:700;font-size:20px;line-height:1.24;letter-spacing:-0.026em;color:var(--navy)">{{ n.title }}</span>
+          <span style="display:block;margin-top:12px;font-size:14px;color:var(--muted)">{{ n.dateLabel }} ↗</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="margin:clamp(48px,6vw,104px) 0 0;background:var(--navy);border-radius:var(--r-lg);padding:clamp(32px,5vw,72px);color:#fff;display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between">
+    <div style="flex:1 1 380px">
+      <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal-light);margin-bottom:16px">How you hear about things</span>
+      <h2 style="font-weight:700;font-size:clamp(30px,3.8vw,50px);line-height:1.05;letter-spacing:-0.038em;margin:0;max-width:20ch">Nothing here has a fixed date. The email does.</h2>
+      <p style="font-size:16.5px;line-height:1.66;max-width:46ch;margin:18px 0 0;color:rgba(255,255,255,0.72)">The Science Lunch, the Apéro, the BBQ and the career talks are all announced by email a couple of weeks ahead. Michael Zogg keeps the list.</p>
+    </div>
+    <div style="flex:0 1 420px;width:100%">
+      <a href="{{ listHref }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:var(--white);color:var(--navy);border-radius:999px;font-weight:600;font-size:15.5px;text-decoration:none" style-hover="background:var(--pale)">Ask to be added <span aria-hidden="true">↗</span></a>
+      <p style="font-size:14.5px;line-height:1.6;margin:16px 0 0;color:rgba(255,255,255,0.72)">One email, and Sofiene puts you on the list. Leaving takes one email too.</p>
+    </div>
+  </section>
+
+  <footer style="padding:clamp(44px,5vw,72px) 0 56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px 40px">
+    <div>
+      <span style="display:flex;align-items:center;gap:12px">
+        <span aria-hidden="true" style="display:flex;flex:none;width:34px;height:34px;border-radius:10px;background:var(--navy);align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;letter-spacing:-0.03em">Ph</span>
+        <span style="font-weight:700;font-size:21px;letter-spacing:-0.03em;color:var(--navy)">PhD Reps</span>
+      </span>
+      <p style="font-size:15px;line-height:1.7;margin:18px 0 0;color:var(--body)">PhD Student Representatives at Pharmazentrum<br />Klingelbergstrasse 50<br />4056 Basel, Switzerland</p>
+    </div>
+    <div>
+      <span style="display:block;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:16px">Pages</span>
+      <p style="margin:0;display:flex;flex-direction:column;gap:10px;font-size:15px">
+        <a href="#/events" style="text-decoration:none;color:var(--body)" style-hover="color:var(--teal-dark)">Events</a>
+        <a href="#/people" style="text-decoration:none;color:var(--body)" style-hover="color:var(--teal-dark)">Your reps</a>
+        <a href="#/news" style="text-decoration:none;color:var(--body)" style-hover="color:var(--teal-dark)">News</a>
+        <a href="#/merch" style="text-decoration:none;color:var(--body)" style-hover="color:var(--teal-dark)">Merch</a>
+      </p>
+    </div>
+    <div>
+      <span style="display:block;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:16px">Follow</span>
+      <p style="margin:0;display:flex;flex-direction:column;gap:10px;font-size:15px">
+        <a href="https://www.linkedin.com/company/phd-students-pharma-unibas" target="_blank" rel="noopener" style="text-decoration:none;color:var(--body)" style-hover="color:var(--teal-dark)">LinkedIn ↗</a>
+        <a href="https://www.instagram.com/biozentrum_phds/" target="_blank" rel="noopener" style="text-decoration:none;color:var(--body)" style-hover="color:var(--teal-dark)">Instagram ↗</a>
+        <a href="https://bsky.app/profile/biozentrum-phd.bsky.social" target="_blank" rel="noopener" style="text-decoration:none;color:var(--body)" style-hover="color:var(--teal-dark)">Bluesky ↗</a>
+      </p>
+    </div>
+    <div>
+      <span style="display:block;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:16px">This site</span>
+      <p style="font-size:15px;line-height:1.7;margin:0;color:var(--body)">Something out of date?<br /><a href="mailto:sofiene.khiari@unibas.ch">Tell Sofiene</a>, who keeps it.<br /><span style="color:var(--muted)">The LinkedIn page is ours; Instagram and Bluesky are shared with the Biozentrum.</span></p>
+    </div>
+  </footer>
+</div>
+</sc-if>
+
+<sc-if value="{{ isEvents }}">
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,56px)">
+  <header style="padding:clamp(40px,5vw,84px) 0 0;max-width:640px">
+    <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:18px">Calendar</span>
+    <h1 style="font-weight:700;font-size:clamp(40px,6vw,80px);line-height:1.02;letter-spacing:-0.04em;margin:0;color:var(--navy)">What’s on</h1>
+    <p style="font-size:clamp(17px,1.4vw,19px);line-height:1.62;margin:22px 0 0;color:var(--body)">Most of what we run has no fixed date: it comes round, and the date reaches you by email a couple of weeks ahead. Those are listed first. Below them is the dated record, which is what has actually been announced.</p>
+  </header>
+
+  <section style="padding:clamp(30px,4vw,52px) 0 0">
+    <h2 style="font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:1.08;letter-spacing:-0.032em;margin:0 0 20px;color:var(--navy)">Runs all year</h2>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ standing }}" as="ev" hint-placeholder-count="4">
+        <a href="{{ ev.route }}" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px 22px;align-items:center;background:var(--white);border-radius:var(--r-md);padding:18px 22px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow-sm);transition:transform 160ms ease" style-hover="transform:translateX(4px)">
+          <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:14px;color:#fff;flex:none;font-weight:800;font-size:13px;letter-spacing:0.04em;text-transform:uppercase;background:{{ ev.color }}">{{ ev.series }}</span>
+          <span>
+            <span style="display:block;font-weight:700;font-size:20px;line-height:1.2;letter-spacing:-0.028em">{{ ev.title }}</span>
+            <span style="display:block;margin-top:3px;font-size:14.5px;color:var(--muted)">{{ ev.metaLine }}</span>
+          </span>
+          <span aria-hidden="true" style="color:var(--faint);font-size:18px">→</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <h2 style="font-weight:700;font-size:clamp(24px,2.6vw,34px);line-height:1.08;letter-spacing:-0.032em;margin:clamp(40px,5vw,72px) 0 0;color:var(--navy)">Dated</h2>
+
+  <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:flex-end;padding:clamp(30px,4vw,52px) 0 24px">
+    <div>
+      <span style="display:block;font-weight:600;font-size:12.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Show</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ whenChips }}" as="c" hint-placeholder-count="3">
+          <button type="button" aria-pressed="{{ c.pressed }}" onClick="{{ c.onClick }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <span style="display:block;font-weight:600;font-size:12.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Series</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ seriesChips }}" as="c" hint-placeholder-count="6">
+          <button type="button" aria-pressed="{{ c.pressed }}" onClick="{{ c.onClick }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding-bottom:clamp(48px,6vw,96px);display:flex;flex-direction:column;gap:14px">
+    <sc-for list="{{ shownEvents }}" as="ev" hint-placeholder-count="6">
+      <a href="{{ ev.route }}" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px 26px;align-items:center;background:var(--white);border-radius:var(--r-lg);padding:22px 26px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow-sm);transition:transform 160ms ease" style-hover="transform:translateY(-3px)">
+        <span style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:70px;height:70px;border-radius:18px;color:#fff;flex:none;background:{{ ev.color }}">
+          <span style="font-weight:800;font-size:25px;line-height:1;letter-spacing:-0.035em">{{ ev.dayNum }}</span>
+          <span style="font-weight:600;font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;margin-top:3px;opacity:0.9">{{ ev.monthShort }}</span>
+        </span>
+        <span>
+          <span style="display:block;font-weight:700;font-size:clamp(21px,2.1vw,26px);line-height:1.18;letter-spacing:-0.03em;color:var(--navy)">{{ ev.title }}</span>
+          <span style="display:block;margin-top:5px;font-size:15px;color:var(--body)">{{ ev.metaLine }}</span>
+        </span>
+        <span style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+          <span style="font-weight:600;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--body);background:var(--pale);padding:7px 13px;border-radius:999px;white-space:nowrap">{{ ev.series }}</span>
+          <sc-if value="{{ ev.provisional }}">
+            <span style="font-weight:600;font-size:12.5px;color:var(--teal-dark);white-space:nowrap">provisional</span>
+          </sc-if>
+        </span>
+      </a>
+    </sc-for>
+    <sc-if value="{{ noEvents }}">
+      <p style="font-size:17px;line-height:1.7;padding-top:16px;color:var(--body)">Nothing dated in this filter. The things that run all year are listed above.</p>
+    </sc-if>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isEvent }}">
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,56px)">
+  <header style="padding:clamp(28px,3.5vw,56px) 0 0">
+    <a href="#/events" style="font-weight:600;font-size:15px;text-decoration:none">← All events</a>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,3vw,48px);align-items:stretch;margin-top:clamp(22px,3vw,36px)">
+      <div style="flex:1 1 480px;background:var(--navy);border-radius:var(--r-lg);padding:clamp(30px,4vw,56px);color:#fff">
+        <span style="display:inline-flex;align-items:center;padding:7px 15px;border-radius:999px;font-weight:600;font-size:12.5px;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:{{ ev.color }}">{{ ev.series }}</span>
+        <h1 style="font-weight:700;font-size:clamp(34px,4.6vw,62px);line-height:1.03;letter-spacing:-0.038em;margin:24px 0 0;max-width:20ch;text-wrap:balance">{{ ev.title }}</h1>
+        <p style="font-size:clamp(16.5px,1.4vw,19px);line-height:1.6;max-width:46ch;margin:22px 0 0;color:rgba(255,255,255,0.8)">{{ ev.blurb }}</p>
+        <sc-if value="{{ ev.provisional }}">
+          <p style="font-weight:600;font-size:14.5px;margin:20px 0 0;color:var(--teal-light)">Date still provisional — confirmed on the mailing list.</p>
+        </sc-if>
+      </div>
+      <aside style="flex:1 1 300px;background:var(--white);border-radius:var(--r-lg);padding:clamp(26px,3vw,36px);box-shadow:var(--shadow-sm);display:flex;flex-direction:column">
+        <span style="display:block;font-weight:600;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:20px">Take part</span>
+        <span style="display:block;font-weight:700;font-size:clamp(26px,2.6vw,34px);line-height:1.08;letter-spacing:-0.032em;color:var(--navy)">{{ ev.dateShort }}</span>
+        <span style="display:block;font-size:15.5px;color:var(--body);margin-top:8px">{{ ev.time }}</span>
+        <p style="font-size:15.5px;line-height:1.66;margin:22px 0 24px;color:var(--body)">{{ ev.signupNote }}</p>
+        <a href="{{ ev.signupHref }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 22px;background:var(--teal);color:#fff;font-weight:600;font-size:15.5px;text-decoration:none;border-radius:999px;margin-top:auto" style-hover="background:var(--teal-dark)">{{ ev.signupLabel }} <span aria-hidden="true">↗</span></a>
+        <p style="font-size:14px;line-height:1.65;margin:18px 0 0;color:var(--muted)">Dates are announced by email. <a href="{{ listHref }}">Ask to be added.</a></p>
+      </aside>
+    </div>
+  </header>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:16px">
+    <div style="background:var(--white);border-radius:var(--r-md);padding:22px 22px 24px;box-shadow:var(--shadow-sm)">
+      <span style="display:block;font-weight:600;font-size:12px;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">When</span>
+      <span style="font-weight:500;font-size:16px;line-height:1.45;color:var(--navy)">{{ ev.whenLabel }}</span>
+    </div>
+    <div style="background:var(--white);border-radius:var(--r-md);padding:22px 22px 24px;box-shadow:var(--shadow-sm)">
+      <span style="display:block;font-weight:600;font-size:12px;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Where</span>
+      <span style="font-weight:500;font-size:16px;line-height:1.45;color:var(--navy)">{{ ev.place }}</span>
+    </div>
+    <div style="background:var(--white);border-radius:var(--r-md);padding:22px 22px 24px;box-shadow:var(--shadow-sm)">
+      <span style="display:block;font-weight:600;font-size:12px;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Organised by</span>
+      <span style="font-weight:500;font-size:16px;line-height:1.45;color:var(--navy)">{{ ev.who }}</span>
+    </div>
+    <div style="background:var(--white);border-radius:var(--r-md);padding:22px 22px 24px;box-shadow:var(--shadow-sm)">
+      <span style="display:block;font-weight:600;font-size:12px;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Cost</span>
+      <span style="font-weight:500;font-size:16px;line-height:1.45;color:var(--navy)">{{ ev.cost }}</span>
+    </div>
+  </section>
+
+  <section style="background:var(--white);border-radius:var(--r-lg);padding:clamp(28px,4vw,64px);margin-top:16px;box-shadow:var(--shadow-sm)">
+    <sc-for list="{{ ev.body }}" as="para" hint-placeholder-count="3">
+      <p style="font-size:17.5px;line-height:1.74;margin:0 0 22px;max-width:66ch;color:var(--body)">{{ para }}</p>
+    </sc-for>
+  </section>
+
+  <section style="padding:clamp(44px,5vw,84px) 0 clamp(52px,6vw,96px)">
+    <h2 style="font-weight:700;font-size:clamp(26px,2.8vw,36px);line-height:1.08;letter-spacing:-0.032em;margin:0 0 22px;color:var(--navy)">Also worth knowing</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px">
+      <sc-for list="{{ relatedEvents }}" as="r" hint-placeholder-count="3">
+        <a href="{{ r.route }}" style="display:block;background:var(--white);border-radius:var(--r-lg);padding:24px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow-sm);transition:transform 160ms ease" style-hover="transform:translateY(-4px)">
+          <span style="display:flex;align-items:center;gap:10px;font-weight:600;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted)">
+            <span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;flex:none;background:{{ r.color }}"></span>
+            {{ r.dayMonth }}
+          </span>
+          <span style="display:block;margin-top:14px;font-weight:700;font-size:20px;line-height:1.22;letter-spacing:-0.026em;color:var(--navy)">{{ r.title }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPeople }}">
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,56px)">
+  <header style="padding:clamp(40px,5vw,84px) 0 0;max-width:660px">
+    <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:18px">Board &amp; assembly</span>
+    <h1 style="font-weight:700;font-size:clamp(40px,6vw,80px);line-height:1.02;letter-spacing:-0.04em;margin:0;color:var(--navy)">Your reps</h1>
+    <p style="font-size:clamp(17px,1.4vw,19px);line-height:1.62;margin:22px 0 0;color:var(--body)">{{ boardCount }} on the board and {{ delegateCount }} in the assembly, across {{ groupCount }} research groups. Write to whoever is closest to your problem, or to the board if you would rather not choose.</p>
+    <p style="font-size:14.5px;line-height:1.6;margin:16px 0 0;color:var(--muted)">This roster is the one published on the shared site, headed Spring 2025. If your group’s delegate has changed since, tell us and it goes up.</p>
+  </header>
+
+  <section style="padding:clamp(34px,4vw,64px) 0 0">
+    <span style="display:block;font-weight:600;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px">The board</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+      <sc-for list="{{ board }}" as="b" hint-placeholder-count="3">
+        <div style="background:var(--white);border-radius:var(--r-lg);padding:26px 24px 28px;box-shadow:var(--shadow-sm);transition:transform 160ms ease" style-hover="transform:translateY(-4px)">
+          <sc-if value="{{ portraits }}">
+            <div style="aspect-ratio:4 / 5;background:var(--pale);border-radius:var(--r-md);overflow:hidden;margin-bottom:22px">
+              <image-slot id="{{ b.slotId }}" shape="rect" style="width:100%;height:100%" placeholder="Portrait"></image-slot>
+            </div>
+          </sc-if>
+          <sc-if value="{{ noPortraits }}">
+            <span style="display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:18px;font-weight:800;font-size:23px;letter-spacing:-0.03em;color:#fff;margin-bottom:22px;background:{{ b.color }}">{{ b.initials }}</span>
+          </sc-if>
+          <span style="display:block;font-weight:600;font-size:12.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--teal)">{{ b.role }}</span>
+          <h2 style="font-weight:700;font-size:26px;line-height:1.14;letter-spacing:-0.032em;margin:10px 0 0;color:var(--navy)">{{ b.name }}</h2>
+          <p style="font-size:15px;line-height:1.62;margin:10px 0 0;color:var(--body)">{{ b.group }}<br />{{ b.portfolio }}</p>
+          <p style="margin:18px 0 0"><a href="{{ b.mailto }}" style="font-weight:600;font-size:14.5px;text-decoration:none">{{ b.email }}</a></p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(40px,5vw,80px) 0 0">
+    <div style="display:flex;gap:22px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;margin-bottom:22px">
+      <div>
+        <span style="display:block;font-weight:600;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Assembly &amp; extended board</span>
+        <h2 style="font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:1.06;letter-spacing:-0.035em;margin:0;color:var(--navy)">{{ delegateCount }} delegates</h2>
+      </div>
+      <sc-if value="{{ layoutDirectory }}">
+        <input type="search" value="{{ query }}" onChange="{{ onQuery }}" placeholder="Search a name, a group, a job…" aria-label="Search delegates" style="max-width:330px;flex:1 1 220px;background:var(--white);border:1px solid var(--line);color:var(--ink);padding:14px 20px;font-size:15.5px;border-radius:999px" />
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ layoutDirectory }}">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;padding:0 0 22px">
+        <sc-for list="{{ portfolioChips }}" as="c" hint-placeholder-count="8">
+          <button type="button" aria-pressed="{{ c.pressed }}" onClick="{{ c.onClick }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ shownDelegates }}" as="d" hint-placeholder-count="8">
+          <div style="display:grid;grid-template-columns:auto minmax(0,1.1fr) minmax(0,1fr) auto;gap:8px 22px;align-items:center;background:var(--white);border-radius:var(--r-md);padding:16px 22px;box-shadow:var(--shadow-sm)">
+            <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;font-weight:700;font-size:15px;color:#fff;flex:none;background:{{ d.color }}">{{ d.initials }}</span>
+            <span style="font-weight:700;font-size:18.5px;line-height:1.2;letter-spacing:-0.026em;color:var(--navy)">{{ d.name }}</span>
+            <span style="font-size:14.5px;color:var(--body)">{{ d.group }}</span>
+            <span style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-end">
+              <sc-for list="{{ d.tags }}" as="t" hint-placeholder-count="2">
+                <span style="font-weight:500;font-size:12.5px;color:var(--body);background:var(--pale);padding:6px 11px;border-radius:999px;white-space:nowrap">{{ t }}</span>
+              </sc-for>
+              <span style="font-weight:600;font-size:14px;color:var(--faint);white-space:nowrap;margin-left:6px">{{ d.group }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ noDelegates }}">
+        <p style="font-size:17px;line-height:1.7;padding-top:24px;color:var(--body)">Nobody matches that. Clear the search, or write to the board.</p>
+      </sc-if>
+      <p style="font-size:14px;margin:22px 0 0;color:var(--muted)">Only the board publishes an address. For anyone else, write to the board and it will be passed on.</p>
+    </sc-if>
+
+    <sc-if value="{{ layoutPortfolio }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+        <sc-for list="{{ portfolioGroups }}" as="g" hint-placeholder-count="6">
+          <div style="background:var(--white);border-radius:var(--r-lg);padding:26px 24px 28px;box-shadow:var(--shadow-sm)">
+            <h3 style="font-weight:600;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin:0 0 20px">{{ g.name }}</h3>
+            <sc-for list="{{ g.people }}" as="p" hint-placeholder-count="3">
+              <p style="margin:0 0 16px"><span style="display:block;font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.026em;color:var(--navy)">{{ p.name }}</span><span style="display:block;margin-top:3px;font-size:14px;color:var(--muted)">{{ p.group }}</span></p>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ layoutCards }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:18px">
+        <sc-for list="{{ delegates }}" as="d" hint-placeholder-count="9">
+          <div style="background:var(--white);border-radius:var(--r-lg);padding:24px 22px 26px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:14px;transition:transform 160ms ease" style-hover="transform:translateY(-4px)">
+            <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;font-weight:800;font-size:19px;letter-spacing:-0.03em;color:#fff;background:{{ d.color }}">{{ d.initials }}</span>
+            <span style="font-weight:700;font-size:20px;line-height:1.18;letter-spacing:-0.028em;color:var(--navy)">{{ d.name }}</span>
+            <span style="font-size:14.5px;line-height:1.55;color:var(--body)">{{ d.group }}</span>
+            <span style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto">
+              <sc-for list="{{ d.tags }}" as="t" hint-placeholder-count="1">
+                <span style="font-weight:500;font-size:12px;color:var(--body);background:var(--pale);padding:5px 10px;border-radius:999px">{{ t }}</span>
+              </sc-for>
+            </span>
+            <span style="font-weight:600;font-size:14.5px;color:var(--muted)">{{ d.group }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+  </section>
+
+  <section style="padding:clamp(40px,5vw,80px) 0 clamp(52px,6vw,96px)">
+    <div style="background:var(--white);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden">
+      <button type="button" onClick="{{ toggleAlumni }}" style="display:flex;align-items:center;gap:16px;background:transparent;border:0;padding:26px clamp(22px,3vw,36px);cursor:pointer;color:var(--navy);width:100%;text-align:left" style-hover="color:var(--teal-dark)">
+        <span style="font-weight:700;font-size:24px;letter-spacing:-0.03em">Alumni</span>
+        <span aria-hidden="true" style="flex:1;min-width:24px;height:1px;background:var(--line)"></span>
+        <span style="font-weight:600;font-size:14.5px;color:var(--teal-dark)">{{ alumniLabel }}</span>
+      </button>
+      <sc-if value="{{ alumniOpen }}">
+        <div style="padding:0 clamp(22px,3vw,36px) 32px;animation:lift 300ms cubic-bezier(.2,.7,.2,1) both">
+          <p style="font-size:16px;line-height:1.68;max-width:56ch;margin:0 0 24px;color:var(--body)">Everyone who has held a seat since the representatives were founded, including the thirteen marked as co-founders.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 32px">
+            <sc-for list="{{ alumni }}" as="a" hint-placeholder-count="12">
+              <p style="margin:0;font-size:16px;line-height:1.7;color:var(--navy)">{{ a.name }} <span style="font-size:13.5px;color:var(--muted)">{{ a.note }}</span></p>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isNews }}">
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,56px)">
+  <header style="padding:clamp(40px,5vw,84px) 0 0;max-width:660px">
+    <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:18px">News</span>
+    <h1 style="font-weight:700;font-size:clamp(40px,6vw,80px);line-height:1.02;letter-spacing:-0.04em;margin:0;color:var(--navy)">Posted</h1>
+    <p style="font-size:clamp(17px,1.4vw,19px);line-height:1.62;margin:22px 0 0;color:var(--body)">The announcements published on the shared site, newest first. Each entry links straight to the original. Day to day, the LinkedIn page is ours and the Instagram and Bluesky accounts are shared with the Biozentrum.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px">
+      <a href="https://www.linkedin.com/company/phd-students-pharma-unibas" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:14px 24px;background:var(--white);border:1px solid var(--line);color:var(--navy);font-weight:600;font-size:15px;text-decoration:none;border-radius:999px" style-hover="border-color:var(--teal-light)">LinkedIn ↗</a>
+      <a href="https://www.instagram.com/biozentrum_phds/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:14px 24px;background:var(--white);border:1px solid var(--line);color:var(--navy);font-weight:600;font-size:15px;text-decoration:none;border-radius:999px" style-hover="border-color:var(--teal-light)">Instagram ↗</a>
+    </div>
+  </header>
+
+  <section style="padding:clamp(34px,4vw,64px) 0 clamp(52px,6vw,96px);display:flex;flex-direction:column;gap:14px">
+    <sc-for list="{{ news }}" as="n" hint-placeholder-count="8">
+      <a href="{{ n.href }}" target="_blank" rel="noopener" style="display:grid;grid-template-columns:minmax(140px,auto) minmax(0,1fr) auto;gap:10px 28px;align-items:center;background:var(--white);border-radius:var(--r-lg);padding:24px 26px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow-sm);transition:transform 160ms ease" style-hover="transform:translateY(-3px)">
+        <span style="font-size:14.5px;color:var(--muted);white-space:nowrap">{{ n.dateLabel }}</span>
+        <span style="font-weight:700;font-size:clamp(20px,2.1vw,26px);line-height:1.2;letter-spacing:-0.03em;color:var(--navy)">{{ n.title }}</span>
+        <span style="display:inline-flex;align-items:center;padding:7px 14px;border-radius:999px;font-weight:600;font-size:12px;letter-spacing:0.07em;text-transform:uppercase;color:#fff;white-space:nowrap;background:{{ n.color }}">{{ n.source }} ↗</span>
+      </a>
+    </sc-for>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isResources }}">
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,56px)">
+  <header style="padding:clamp(40px,5vw,84px) 0 0;max-width:660px">
+    <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:18px">Resources</span>
+    <h1 style="font-weight:700;font-size:clamp(40px,6vw,80px);line-height:1.02;letter-spacing:-0.04em;margin:0;color:var(--navy)">Where to look</h1>
+    <p style="font-size:clamp(17px,1.4vw,19px);line-height:1.62;margin:22px 0 0;color:var(--body)">The things people ask us most, in one place. If a link is missing or wrong, tell Sofiene and it goes up.</p>
+  </header>
+
+  <section style="padding:clamp(34px,4vw,64px) 0 0">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px">
+      <sc-for list="{{ resourceGroups }}" as="g" hint-placeholder-count="4">
+        <div style="background:var(--white);border-radius:var(--r-lg);padding:28px 26px 32px;box-shadow:var(--shadow-sm)">
+          <h2 style="font-weight:700;font-size:24px;line-height:1.16;letter-spacing:-0.03em;margin:0;color:var(--navy)">{{ g.name }}</h2>
+          <p style="font-size:14.5px;line-height:1.6;color:var(--muted);margin:10px 0 24px">{{ g.note }}</p>
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="3">
+            <p style="margin:0 0 14px;font-size:16px;line-height:1.55"><a href="{{ it.href }}" target="{{ it.target }}" rel="noopener" style="text-decoration:none;color:var(--navy);border-bottom:1px solid var(--line)" style-hover="color:var(--teal-dark);border-color:var(--teal-light)">{{ it.label }}</a> <span style="font-size:13px;color:var(--muted)">{{ it.hint }}</span></p>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="mailing" style="margin:clamp(40px,5vw,80px) 0 0;background:var(--navy);border-radius:var(--r-lg);padding:clamp(32px,5vw,72px);color:#fff;display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between">
+    <div style="flex:1 1 380px">
+      <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal-light);margin-bottom:16px">The mailing list</span>
+      <h2 style="font-weight:700;font-size:clamp(30px,3.8vw,50px);line-height:1.05;letter-spacing:-0.038em;margin:0;max-width:22ch">Every date we have reaches you by email</h2>
+      <p style="font-size:16.5px;line-height:1.66;max-width:48ch;margin:18px 0 0;color:rgba(255,255,255,0.72)">Michael Zogg keeps the list; Natasha Marion Bärenzung and Stephanie Vogt write the newsletter. It is the only channel where the Science Lunch and the Apéro dates appear.</p>
+    </div>
+    <div style="flex:0 1 420px;width:100%">
+      <a href="{{ listHref }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:var(--white);color:var(--navy);border-radius:999px;font-weight:600;font-size:15.5px;text-decoration:none" style-hover="background:var(--pale)">Ask to be added <span aria-hidden="true">↗</span></a>
+      <p style="font-size:14.5px;line-height:1.6;margin:16px 0 0;color:rgba(255,255,255,0.72)">One email, and Sofiene puts you on the list. Leaving takes one email too.</p>
+    </div>
+  </section>
+
+  <section style="padding:clamp(40px,5vw,80px) 0 clamp(52px,6vw,96px)">
+    <div style="background:var(--white);border-radius:var(--r-lg);padding:clamp(30px,4vw,64px);box-shadow:var(--shadow-sm);display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between">
+      <div style="flex:1 1 400px">
+        <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:16px">Confidential</span>
+        <h2 style="font-weight:700;font-size:clamp(28px,3.4vw,44px);line-height:1.06;letter-spacing:-0.035em;margin:0;max-width:26ch;color:var(--navy)">Something is wrong and you’d rather not say it out loud</h2>
+        <p style="font-size:16.5px;line-height:1.66;max-width:52ch;margin:18px 0 0;color:var(--body)">Two delegates hold the department deputy role. That is the route for anything you would rather not raise yourself. Neither publishes an address, so the board will pass a message on.</p>
+      </div>
+      <div style="flex:0 1 280px;display:flex;flex-direction:column;gap:12px;width:100%">
+        <span style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 22px;background:var(--pale);color:var(--navy);font-weight:600;font-size:15.5px;border-radius:999px">Aleksandra Blagojevic <span style="font-weight:500;font-size:14px;color:var(--muted)">Molecular Pharmacy</span></span>
+        <span style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 22px;background:var(--pale);color:var(--navy);font-weight:600;font-size:15.5px;border-radius:999px">Seraina Moser <span style="font-weight:500;font-size:14px;color:var(--muted)">Molecular &amp; Systems Toxicology</span></span>
+        <a href="mailto:diell.aliu@unibas.ch" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 22px;background:var(--navy);color:#fff;font-weight:600;font-size:15.5px;text-decoration:none;border-radius:999px" style-hover="background:var(--navy-2)">Write to the board <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isMerch }}">
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,56px)">
+  <header style="padding:clamp(40px,5vw,84px) 0 0">
+    <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:18px">Merchandise</span>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,64px);align-items:center">
+      <div style="flex:1 1 400px">
+        <h1 style="font-weight:700;font-size:clamp(40px,5.6vw,76px);line-height:1.02;letter-spacing:-0.042em;margin:0;color:var(--navy)">The hoodie</h1>
+        <p style="font-size:clamp(17px,1.4vw,19.5px);line-height:1.58;max-width:44ch;margin:24px 0 0;color:var(--body)">The PhD Students logo, stitched on the right chest area. The price is between CHF 60 and 80 depending on how many of us order, so bring your corridor.</p>
+        <p style="font-weight:600;font-size:16px;line-height:1.8;margin:20px 0 0;color:var(--navy)">Fill in the form by <span style="color:var(--teal-dark)">25 November</span> · sizes on the form · Stephanie Vogt holds this one</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSflzKrOBsrmeJbPw2xik6mRxbgWWK6qoQRb4ZFXf7sxP44BrA/viewform?usp=dialog" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:var(--teal);color:#fff;border-radius:999px;font-weight:600;font-size:15.5px;text-decoration:none" style-hover="background:var(--teal-dark)">Order a hoodie <span aria-hidden="true">↗</span></a>
+          <a href="https://phdstudents.biozentrum.unibas.ch/wp-content/uploads/Flyer_Merch.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:var(--white);border:1px solid var(--line);color:var(--navy);border-radius:999px;font-weight:600;font-size:15.5px;text-decoration:none" style-hover="border-color:var(--teal-light)">Flyer (PDF) ↗</a>
+        </div>
+      </div>
+      <figure style="flex:1 1 300px;max-width:400px;margin:0 0 0 auto">
+        <div style="aspect-ratio:4 / 5;max-height:470px;background:var(--pale);border-radius:var(--r-lg);overflow:hidden">
+          <image-slot id="v4-merch-hoodie" shape="rect" style="width:100%;height:100%;aspect-ratio:auto" placeholder="Drop a photo of the hoodie here"></image-slot>
+        </div>
+      </figure>
+    </div>
+  </header>
+
+  <section style="padding:clamp(40px,5vw,80px) 0 clamp(52px,6vw,96px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px">
+      <div style="background:var(--white);border-radius:var(--r-lg);padding:28px 26px 30px;box-shadow:var(--shadow-sm)">
+        <span style="display:block;font-weight:600;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:16px">Price</span>
+        <span style="display:block;font-weight:800;font-size:44px;line-height:1;letter-spacing:-0.04em;color:var(--navy)">60–80</span>
+        <p style="font-size:15.5px;line-height:1.66;margin:14px 0 0;color:var(--body)">Swiss francs, depending on how many hoodies are ordered. The more orders, the lower the price.</p>
+      </div>
+      <div style="background:var(--white);border-radius:var(--r-lg);padding:28px 26px 30px;box-shadow:var(--shadow-sm)">
+        <span style="display:block;font-weight:600;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:16px">Deadline</span>
+        <span style="display:block;font-weight:800;font-size:44px;line-height:1;letter-spacing:-0.04em;color:var(--navy)">25 Nov</span>
+        <p style="font-size:15.5px;line-height:1.66;margin:14px 0 0;color:var(--body)">The day the order form closes. The announcement gives a day and a month, not a year.</p>
+      </div>
+      <div style="background:var(--white);border-radius:var(--r-lg);padding:28px 26px 30px;box-shadow:var(--shadow-sm)">
+        <span style="display:block;font-weight:600;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:16px">Pick-up</span>
+        <span style="display:block;font-weight:800;font-size:44px;line-height:1;letter-spacing:-0.04em;color:var(--navy)">In person</span>
+        <p style="font-size:15.5px;line-height:1.66;margin:14px 0 0;color:var(--body)">Announced by email once the batch arrives.</p>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;homeLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Statement hero&quot;,&quot;Event-first&quot;],&quot;default&quot;:&quot;Statement hero&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Structure&quot;},&quot;repsLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Searchable directory&quot;,&quot;Grouped by portfolio&quot;,&quot;Portrait cards&quot;],&quot;default&quot;:&quot;Portrait cards&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Structure&quot;},&quot;showPortraits&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Structure&quot;}}">
+class Component extends DCLogic {
+  state = { route: { page: 'home' }, when: 'all', series: 'all', q: '', portfolio: 'all', alumni: false };
+
+  // one teal→navy family, so every accent stays inside the palette
+  PALETTE = ['#2a8f98', '#17646f', '#3fa8a0', '#06303d', '#4e7a88', '#1f7a87', '#6fbfb3'];
+
+  SERIES_COLOR = {
+    'Science Lunch': '#2a8f98', 'Lunch Lottery': '#17646f', 'Social': '#3fa8a0',
+    'PhD Retreat': '#06303d', 'Career': '#4e7a88', 'Seminar': '#1f7a87', 'Merchandise': '#6fbfb3'
+  };
+  SOURCE_COLOR = { Instagram: '#17646f', LinkedIn: '#2a8f98', Site: '#4e7a88' };
+
+  // Board and assembly as published on the shared site, headed “Spring 2025 / Board
+  // members 2024”. Only the three board addresses are published there; the delegates
+  // are listed without one, so this site does not print a guessed address for them.
+  BOARD = [
+    { name: 'Diell Aliu', role: 'President', group: 'Pharmaceutical Technology', portfolio: 'LinkedIn page · PhD Retreat', email: 'diell.aliu@unibas.ch' },
+    { name: 'Alessandra Cavegn', role: 'Secretary', group: 'Pharmaceutical Technology', portfolio: 'PhD Retreat 2024 · BBQ', email: 'alessandra.cavegn@unibas.ch' },
+    { name: 'Jannes Felsch', role: 'Treasurer', group: 'Molecular Pharmacy', portfolio: '', email: 'jannes.felsch@unibas.ch' }
+  ];
+
+  DELEGATES = [
+    { name: 'Aleksandra Blagojevic', group: 'Molecular Pharmacy', tags: ['Department deputy'] },
+    { name: 'Alexander Areesanan', group: 'Translational Complementary Medicine', tags: ['Science Lunch'] },
+    { name: 'Anna Bollinger', group: 'Pharmaceutical Care', tags: ['Career events', 'LinkedIn page'] },
+    { name: 'Frido Joos', group: 'Molecular & Systems Toxicology', tags: ['LinkedIn page', 'Contact: D-BSSE & Chemistry'] },
+    { name: 'Jan Thomann', group: 'Psychopharmacology Research', tags: ['Seminar in Drug Sciences'] },
+    { name: 'Jonas Kost', group: 'Pharmaceutical Technology', tags: ['PhD Retreat'] },
+    { name: 'Lars Höing', group: 'Pharmaceutical Biology', tags: ['Pharm Apéro'] },
+    { name: 'Manuel Kley', group: 'Molecular & Systems Toxicology', tags: ['Contact: DBM', 'BBQ'] },
+    { name: 'Maria Karpouchtsi', group: 'Pharmaceutical Biology', tags: ['Career events'] },
+    { name: 'Michael Zogg', group: 'Molecular & Systems Toxicology', tags: ['Mailing list admin', 'BBQ'] },
+    { name: 'Natasha Marion Bärenzung', group: 'Molecular & Systems Toxicology', tags: ['Newsletter', 'Science Lunch'] },
+    { name: 'Nina Wittwer', group: 'Clinical Pharmacy & Epidemiology', tags: [] },
+    { name: 'Selina Barbati', group: 'Pharmaceutical Care', tags: ['Lunch Lottery'] },
+    { name: 'Seraina Moser', group: 'Molecular & Systems Toxicology', tags: ['Department deputy', 'Contact: Tropeninstitut'] },
+    { name: 'Sofiene Khiari', group: 'Computational Pharmacy', tags: ['Website'] },
+    { name: 'Stephanie Vogt', group: 'Molecular Pharmacy', tags: ['Merchandise', 'Newsletter'] },
+    { name: 'Tamara Balsiger', group: 'Pharmaceutical Biology', tags: ['LinkedIn page', 'Twitter account'] },
+    { name: 'Tamino Zappalà', group: 'Clinical Pharmacy & Epidemiology', tags: ['LinkedIn page'] }
+  ];
+
+  ALUMNI = [
+    { name: 'Roman Aschwanden' },
+    { name: 'Manuel Sellner' }, { name: 'Valerio Taggi' }, { name: 'Jens Casper' },
+    { name: 'Jan Stephan Bolten' }, { name: 'Jacek Kedzierski' }, { name: 'Fine Dietrich' },
+    { name: 'Carla Johanna Plüss' }, { name: 'Gabrielè Sakalauskaitè' },
+    { name: 'Vanessa Abegg', note: 'President' }, { name: 'Tanja Hell', note: 'Treasurer' },
+    { name: 'Stephan Gut' }, { name: 'Noah Aebi' },
+    { name: 'Lara Dürr', note: 'Co-founder, Secretary' }, { name: 'Clément Bechtler', note: 'Co-founder' },
+    { name: 'Kevin Widmer', note: 'Co-founder' }, { name: 'Carole Marxer', note: 'Co-founder' },
+    { name: 'Butrint Aliu', note: 'Co-founder, President' }, { name: 'Tiago Bozzola' },
+    { name: 'Karolina Kolaczynska', note: 'Co-founder' }, { name: 'Anima Schäfer', note: 'Co-founder' },
+    { name: 'Silvia Inderbinen', note: 'Co-founder' }, { name: 'Miljenko Panajatovic', note: 'Co-founder' },
+    { name: 'Melanie Haag', note: 'Co-founder' }, { name: 'Jakob Reinhardt', note: 'Co-founder' },
+    { name: 'Maryam Farzan', note: 'Co-founder, President' }, { name: 'Andreas Schittny', note: 'Co-founder' }
+  ];
+
+  STATS = [
+    { value: '21', label: 'Delegates and board members' },
+    { value: '9', label: 'Research groups represented' },
+    { value: '17', label: 'PhD Retreats since 2009' },
+    { value: 'CHF 0', label: 'To take part in most of what we run' }
+  ];
+
+  // the departments and institutes the assembly keeps a named contact person for
+  HERO_LOGOS = ['Biozentrum', 'D-BSSE', 'DBM', 'Tropeninstitut', 'Chemistry'];
+
+  // What runs all year. None of these has a published date, so none is given one:
+  // they are announced by email as they come round.
+  STANDING = [
+    {
+      id: 'science-lunch', series: 'Science Lunch', title: 'PhD Science Lunch',
+      cadence: 'Once a month, usually the first Wednesday or Thursday, at 12:00',
+      place: 'Biozentrum, Science Lounge (4th floor), unless the announcement says otherwise',
+      who: 'PhD students of the Biozentrum and the Pharmazentrum. Alexander Areesanan and Natasha Marion Bärenzung hold it here, and Shivani Mansingh is the organising contact.',
+      cost: 'Free. Pizza and drinks are provided.',
+      blurb: 'Fifteen minutes of one brave PhD student’s project, questions from a room that is on their side, then pizza. Once a month, all year.',
+      body: [
+        'The PhD Science Lunch is organised by PhD students of the Biozentrum and the Pharmazentrum. It opens with a fifteen-minute informal presentation and Q&A by a volunteer, and after that there is plenty of time to eat pizza and talk to people outside your own field. Talks are open to everyone, master’s students and postdocs included.',
+        'It exists so that presenting is something you can practise cheaply: a relaxed room, useful questions from people who do not share your assumptions, and helpful feedback from PhD students in other fields. Meeting people you would otherwise never run into is the other half of the point.',
+        'Dates are not fixed a semester ahead. Announcements come by email, so watch your inbox.'
+      ],
+      signupNote: 'Just turn up. If you would like to give the talk, write to the organisers and pick a month.',
+      signupLabel: 'Write to the organisers', signupHref: 'mailto:shivani.mansingh@unibas.ch?subject=PhD%20Science%20Lunch'
+    },
+    {
+      id: 'lunch-lottery', series: 'Lunch Lottery', title: 'Lunch Lottery',
+      cadence: 'Subscribe once, then matched once a month',
+      place: 'Wherever you and your match agree, in person or online',
+      who: 'The PhD representatives of the Pharmazentrum, the Biozentrum and D-BSSE together. Selina Barbati holds it here.',
+      cost: 'Free. Food vouchers of CHF 10 are raffled among participants from time to time.',
+      blurb: 'Subscribe once, and every month we match you with one or two people from another research group for lunch or a coffee. That is the whole mechanism.',
+      body: [
+        'Are you looking to get to know other PhD students, postdocs, professors or scientific staff from other departments? Would you be keen to share a lunch or grab a coffee with someone new from another research group, but unsure how to start? That is what the Lunch Lottery is for.',
+        'Step one: subscribe by sending an email to lunch-lottery@unibas.ch, saying whether you would rather meet one person or two. Step two: once a month you are matched with one or two like-minded people. Step three: get in touch with your match and eat something, whenever and wherever suits you, in person or online.',
+        'If at some point you no longer want to take part, one short email to the same address removes you from the list. Happy matching.'
+      ],
+      signupNote: 'Email us and say whether you would prefer one match or two.',
+      signupLabel: 'Subscribe by email', signupHref: 'mailto:lunch-lottery@unibas.ch?subject=Lunch%20Lottery%20subscription'
+    },
+    {
+      id: 'career-lecture', series: 'Career', title: 'Career Lecture Series',
+      cadence: 'Monthly, through the semester',
+      place: 'Announced with each talk',
+      who: 'Organised together with the Postdoc Club. Anna Bollinger and Maria Karpouchtsi hold it here; the organising contacts are Dibya Saha, Daan Overwijn, Camila Pulido Barrera and Máté Balajti.',
+      cost: 'Free',
+      blurb: 'People who built a career outside academia, explaining how they got there and what the job is actually like.',
+      body: [
+        'The aim of the series is to tell you about career opportunities outside academia. Invited speakers are, for example, editors at scientific journals, consultants, journalists, or people working in industry. They describe their education, what the job required of them and the steps they took towards it, then explain the work itself: what they do each day, and the advantages and disadvantages of doing it.',
+        'If you have an idea for a speaker and would like to host them, you are very welcome to. Write to the organisers and they will help with the invitation and with the visit itself.'
+      ],
+      signupNote: 'No registration. If there is someone you would like to hear from, offer to host them.',
+      signupLabel: 'Offer to host a speaker', signupHref: 'mailto:dibya.saha@unibas.ch?subject=Career%20Lecture%20Series%20—%20speaker'
+    },
+    {
+      id: 'pharm-apero', series: 'Social', title: 'Pharm Apéro',
+      cadence: 'A few times a year, announced by email',
+      place: 'Pharmazentrum',
+      who: 'Lars Höing',
+      cost: 'Free',
+      blurb: 'Something to drink and an hour of conversation with the people you pass in the stairwell every day.',
+      body: [
+        'The Apéro is the Pharmazentrum’s own small social fixture: a table, something to drink, and the chance to meet the people you share a building with but have never actually spoken to.',
+        'There is no fixed schedule. Dates are announced by email ahead of time.'
+      ],
+      signupNote: 'Nothing to register. Watch your inbox for the date.',
+      signupLabel: 'Ask about the next one', signupHref: 'mailto:diell.aliu@unibas.ch?subject=Pharm%20Ap%C3%A9ro'
+    },
+    {
+      id: 'summer-bbq', series: 'Social', title: 'Summer BBQ',
+      cadence: 'Once a year, in the summer',
+      place: 'Announced with the invitation',
+      who: 'Manuel Kley, Michael Zogg and Alessandra Cavegn',
+      cost: 'Free',
+      blurb: 'One evening a year the whole department stands around the same grill. No programme, no sign-up sheet.',
+      body: [
+        'The BBQ is the least structured thing the representatives organise and reliably one of the best attended. There is no programme and no talk: the reps light the grills, put out enough food, and let the department mix itself.',
+        'Bring your group, and bring the new master’s student who has not met anyone yet. If you can help set up or clear away, say so when you reply.'
+      ],
+      signupNote: 'No registration. If you can help set up or clear away, write to Manuel, Michael or Alessandra.',
+      signupLabel: 'Offer to help', signupHref: 'mailto:alessandra.cavegn@unibas.ch?subject=Summer%20BBQ%20—%20I%20can%20help'
+    },
+    {
+      id: 'seminar-drug-sciences', series: 'Seminar', title: 'Seminar in Drug Sciences',
+      cadence: 'Through the semester',
+      place: 'Pharmazentrum',
+      who: 'Jan Thomann represents the PhD students on it',
+      cost: 'Free',
+      blurb: 'The department’s own seminar series, with a PhD delegate carrying student interests into it.',
+      body: [
+        'The seminar brings speakers into the department through the semester. Jan Thomann holds this portfolio for the assembly, which is the practical route for a PhD student to get a name onto the list.',
+        'Lead times are long, so a suggestion made early is the one that lands.'
+      ],
+      signupNote: 'Open to everyone in the department.',
+      signupLabel: 'Suggest a speaker', signupHref: 'mailto:diell.aliu@unibas.ch?subject=Seminar%20in%20Drug%20Sciences'
+    },
+    {
+      id: 'social-events', series: 'Social', title: 'Everything else',
+      cadence: 'Through the year, whenever someone organises one',
+      place: 'Around Basel',
+      who: 'Whoever is up for it, with the Biozentrum reps',
+      cost: 'Free or close to it',
+      blurb: 'Football against the FMI, BBQs along the Rhein, billiards in winter, theme parties, LaserTag, rope climbing.',
+      body: [
+        'Social events exist so you meet the people you are doing this alongside. As PhD students we think interaction between students matters as much as the science does.',
+        'The list is not fixed: an annual football match against the FMI, summer BBQs along the Rhein, winter billiard nights, theme parties, LaserTag, rope climbing, and whatever else someone decides to organise. Most of these are run together with the Biozentrum representatives.'
+      ],
+      signupNote: 'Announcements come by email. If you want to organise one, say so.',
+      signupLabel: 'Organise something', signupHref: 'mailto:diell.aliu@unibas.ch?subject=Social%20event'
+    }
+  ];
+
+  // Dated events. Only things with a published date belong here.
+  EVENTS = [
+    {
+      id: 'phd-retreat-2026', series: 'PhD Retreat', title: 'PhD Retreat 2026',
+      date: '2026-08-27', time: 'Three days, 27 to 29 August',
+      place: 'Hotel La Palma au Lac', who: 'The joint organising committee of the Biozentrum and the Pharmazentrum',
+      cost: 'Ticketed. Registration opened on 7 April 2026 and closed on 14 May 2026.',
+      provisional: false,
+      blurb: 'The 17th retreat: two and a half days away from the building with the whole PhD community of both institutes.',
+      body: [
+        'The PhD retreat has been an annual highlight since it began in 2009, and it is now organised jointly by the representatives of the Biozentrum and the Pharmazentrum. It is a two and a half day event of keynote lectures, PhD student talks, poster sessions and networking, and past editions have drawn more than eighty PhD students.',
+        'Every participant presents their own work, as a poster or a short talk. That is the point rather than a condition: the retreat exists to practise presenting and to put people from two large institutes and a plethora of research areas in the same room. Students receive 1 CP for a successful participation.',
+        'The Pharmazentrum members of the 2026 organising committee were Chiara Pratesi (venue planning, group of Daniel Ricklin), Victoria Susan (finances and budget, group of Rachel Hevey) and David Wang (funding and sponsorship, group of Jörg Huwyler). Everyone eligible to take part receives a registration link by email months ahead.'
+      ],
+      signupNote: 'Registration for 2026 closed on 14 May. The retreat site carries the programme, the sponsors and every past edition.',
+      signupLabel: 'The retreat site', signupHref: 'https://phd-retreat.unibas.ch/'
+    },
+    {
+      id: 'retreat-2023', series: 'PhD Retreat', title: 'PhD Retreat 2023', date: '2023-10-09',
+      time: 'Three days', place: 'Hotel Sunstar, Davos', who: 'The 2023 committee', cost: 'Ticketed', provisional: false,
+      blurb: 'The 14th retreat, at the Hotel Sunstar in Davos.',
+      body: ['Announced on the shared site at the time. The retreat site keeps the full history.'],
+      signupNote: 'This event has passed.', signupLabel: 'Original announcement',
+      signupHref: 'https://phdstudents.biozentrum.unibas.ch/phd-retreat-2023/'
+    },
+    {
+      id: 'science-lunch-2022', series: 'Science Lunch', title: 'PhD Science Lunch', date: '2022-04-05',
+      time: '12:00', place: 'Biozentrum, Science Lounge', who: 'The organisers', cost: 'Free', provisional: false,
+      blurb: 'A past edition of the monthly Science Lunch.',
+      body: ['Announced on the shared site at the time.'],
+      signupNote: 'This event has passed.', signupLabel: 'Original announcement',
+      signupHref: 'https://phdstudents.biozentrum.unibas.ch/phd-science-lunch-2/'
+    },
+    {
+      id: 'career-2021', series: 'Career', title: 'Career Lecture — Modern career pathways', date: '2021-09-08',
+      time: '', place: '', who: 'The career events team', cost: 'Free', provisional: false,
+      blurb: 'What people with a doctorate in the life sciences actually go on to do.',
+      body: ['Announced on the shared site at the time.'],
+      signupNote: 'This event has passed.', signupLabel: 'Original announcement',
+      signupHref: 'https://phdstudents.biozentrum.unibas.ch/career-lecture-modern-career-pathways/'
+    },
+    {
+      id: 'project-management-2021', series: 'Career', title: 'Project Management Course for Researchers', date: '2021-02-25',
+      time: '', place: '', who: 'The career events team', cost: 'Free', provisional: false,
+      blurb: 'A practical course on running a research project like a project.',
+      body: ['Announced on the shared site at the time.'],
+      signupNote: 'This event has passed.', signupLabel: 'Original announcement',
+      signupHref: 'https://phdstudents.biozentrum.unibas.ch/project-management-course-for-researchers/'
+    },
+    {
+      id: 'info-event-2021', series: 'Career', title: 'Info Event — University resources for students and employees', date: '2021-02-25',
+      time: '', place: '', who: 'The board', cost: 'Free', provisional: false,
+      blurb: 'What the university already offers you, and where it is hidden.',
+      body: ['Announced on the shared site at the time.'],
+      signupNote: 'This event has passed.', signupLabel: 'Original announcement',
+      signupHref: 'https://phdstudents.biozentrum.unibas.ch/info-event-university-resources-for-students-and-employees/'
+    },
+    {
+      id: 'female-career-2020', series: 'Career', title: 'Female Career Development Programs', date: '2020-12-10',
+      time: '', place: '', who: 'The career events team', cost: 'Free', provisional: false,
+      blurb: 'The programmes available at the university, and how to get onto them.',
+      body: ['Announced on the shared site at the time.'],
+      signupNote: 'This event has passed.', signupLabel: 'Original announcement',
+      signupHref: 'https://phdstudents.biozentrum.unibas.ch/female-career-development-programs/'
+    },
+    {
+      id: 'science-lunch-2020', series: 'Science Lunch', title: 'PhD Science Lunch', date: '2020-03-02',
+      time: '12:00', place: 'Biozentrum, Science Lounge', who: 'The organisers', cost: 'Free', provisional: false,
+      blurb: 'A past edition of the monthly Science Lunch.',
+      body: ['Announced on the shared site at the time.'],
+      signupNote: 'This event has passed.', signupLabel: 'Original announcement',
+      signupHref: 'https://phdstudents.biozentrum.unibas.ch/phd-science-lunch/'
+    }
+  ];
+
+  // the news feed as it stands on the shared site
+  NEWS = [
+    { date: '2023-10-09', source: 'Site', title: 'PhD Retreat 2023', href: 'https://phdstudents.biozentrum.unibas.ch/phd-retreat-2023/' },
+    { date: '2022-04-05', source: 'Site', title: 'PhD Science Lunch', href: 'https://phdstudents.biozentrum.unibas.ch/phd-science-lunch-2/' },
+    { date: '2021-09-08', source: 'Site', title: 'Career Lecture — Modern career pathways', href: 'https://phdstudents.biozentrum.unibas.ch/career-lecture-modern-career-pathways/' },
+    { date: '2021-02-25', source: 'Site', title: 'Project Management Course for Researchers', href: 'https://phdstudents.biozentrum.unibas.ch/project-management-course-for-researchers/' },
+    { date: '2021-02-25', source: 'Site', title: 'Info Event — University resources for students and employees', href: 'https://phdstudents.biozentrum.unibas.ch/info-event-university-resources-for-students-and-employees/' },
+    { date: '2020-12-10', source: 'Site', title: 'Female Career Development Programs', href: 'https://phdstudents.biozentrum.unibas.ch/female-career-development-programs/' },
+    { date: '2020-03-02', source: 'Site', title: 'PhD Science Lunch', href: 'https://phdstudents.biozentrum.unibas.ch/phd-science-lunch/' }
+  ];
+
+  RESOURCES = [
+    {
+      name: 'Where you are', note: 'The department and the university',
+      items: [
+        { label: 'Pharmazentrum', href: 'https://pharma.unibas.ch/', target: '_blank' },
+        { label: 'University of Basel', href: 'https://www.unibas.ch/', target: '_blank' },
+        { label: 'The shared site we are moving off', href: 'https://phdstudents.biozentrum.unibas.ch/', target: '_blank' }
+      ]
+    },
+    {
+      name: 'When something is wrong', note: 'Two delegates hold the deputy role',
+      items: [
+        { label: 'Aleksandra Blagojevic — department deputy', href: '#/people' },
+        { label: 'Seraina Moser — department deputy', href: '#/people' },
+        { label: 'Or write to the board', href: 'mailto:diell.aliu@unibas.ch' }
+      ]
+    },
+    {
+      name: 'The retreat', note: 'Programme, sponsors and every past edition',
+      items: [
+        { label: 'PhD Retreat site', href: 'https://phd-retreat.unibas.ch/', target: '_blank' },
+        { label: 'Sponsoring the retreat', href: 'https://phd-retreat.unibas.ch/sponsors/', target: '_blank' },
+        { label: 'Past retreats, 2009 onwards', href: 'https://phd-retreat.unibas.ch/past-retreats/', target: '_blank' }
+      ]
+    },
+    {
+      name: 'After the PhD', note: 'Jobs, and people who have been through it',
+      items: [
+        { label: 'Career Lecture Series', href: '#/events/career-lecture' },
+        { label: 'Open positions at the Biozentrum', href: 'https://www.biozentrum.unibas.ch/open-positions/', target: '_blank' },
+        { label: 'Postdoc Club', href: 'https://www.biozentrum.unibas.ch/postdoc/', target: '_blank' },
+        { label: 'Links collected by the reps', href: 'https://phdstudents.biozentrum.unibas.ch/links/', target: '_blank' }
+      ]
+    }
+  ];
+
+  componentDidMount() {
+    this.sync = () => {
+      const h = (location.hash || '#/').replace(/^#\/?/, '');
+      const parts = h.split('/').filter(Boolean);
+      this.setState({ route: { page: parts[0] || 'home', id: parts[1] || null } });
+      if (this.mounted) window.scrollTo({ top: 0, behavior: 'instant' });
+      this.mounted = true;
+    };
+    window.addEventListener('hashchange', this.sync);
+    this.sync();
+  }
+  componentWillUnmount() { if (this.sync) window.removeEventListener('hashchange', this.sync); }
+
+  initials(name) { const p = name.split(' '); return (p[0][0] + p[p.length - 1][0]).toUpperCase(); }
+  d(iso) { return new Date(iso + 'T00:00:00'); }
+  dayMonth(iso) { return this.d(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }); }
+  long(iso) { return this.d(iso).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); }
+
+  decorate(ev) {
+    const d = this.d(ev.date);
+    return Object.assign({}, ev, {
+      route: '#/events/' + ev.id,
+      color: this.SERIES_COLOR[ev.series] || '#2a8f98',
+      dayNum: String(d.getDate()),
+      monthShort: d.toLocaleDateString('en-GB', { month: 'short' }),
+      dayMonth: this.dayMonth(ev.date),
+      dateShort: d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }),
+      yearLabel: String(d.getFullYear()),
+      whenLabel: this.long(ev.date) + (ev.time ? ' · ' + ev.time : ''),
+      metaLine: [ev.time, ev.place].filter(Boolean).join(' · ')
+    });
+  }
+
+  decorateStanding(a) {
+    return Object.assign({}, a, {
+      route: '#/events/' + a.id,
+      color: this.SERIES_COLOR[a.series] || '#2a8f98',
+      recurring: true,
+      dateShort: a.cadence, dayMonth: a.cadence, whenLabel: a.cadence, time: '',
+      provisional: false,
+      metaLine: [a.cadence, a.place].filter(Boolean).join(' · ')
+    });
+  }
+
+  renderVals() {
+    const s = this.state, p = this.props;
+    const page = s.route.page;
+    const now = new Date(); now.setHours(0, 0, 0, 0);
+    const dated = this.EVENTS.map((e) => this.decorate(e));
+    const standing = this.STANDING.map((a) => this.decorateStanding(a));
+    const all = dated.concat(standing);
+    const upcoming = dated.filter((e) => this.d(e.date) >= now).sort((a, b) => a.date < b.date ? -1 : 1);
+    const past = dated.filter((e) => this.d(e.date) < now).sort((a, b) => a.date > b.date ? -1 : 1);
+
+    const pool = s.when === 'upcoming' ? upcoming : s.when === 'past' ? past : upcoming.concat(past);
+    const shownEvents = pool.filter((e) => s.series === 'all' || e.series === s.series);
+    const seriesNames = ['all'].concat(Array.from(new Set(all.map((e) => e.series))));
+    const chip = (key, label, cur, set) => ({ label, pressed: cur === key, onClick: () => set(key) });
+
+    const lead = upcoming[0] || null;
+    const leadDate = lead ? this.d(lead.date) : null;
+    const ev = page === 'events' && s.route.id ? all.find((e) => e.id === s.route.id) : null;
+
+    const layout = p.repsLayout ?? 'Portrait cards';
+    const dq = s.q.trim().toLowerCase();
+    const delegates = this.DELEGATES.map((d, i) => Object.assign({}, d, {
+      initials: this.initials(d.name), color: this.PALETTE[i % this.PALETTE.length]
+    }));
+    const shownDelegates = delegates.filter((d) => {
+      const okP = s.portfolio === 'all' || d.tags.some((t) => t === s.portfolio);
+      const hay = (d.name + ' ' + d.group + ' ' + d.tags.join(' ')).toLowerCase();
+      return okP && (!dq || hay.includes(dq));
+    });
+    const portfolios = Array.from(new Set(this.DELEGATES.flatMap((d) => d.tags))).sort();
+    const portfolioGroups = portfolios.map((n) => ({ name: n, people: delegates.filter((d) => d.tags.includes(n)) }))
+      .concat([{ name: 'Group delegates', people: delegates.filter((d) => d.tags.length === 0) }])
+      .filter((g) => g.people.length);
+
+    const homeLayout = p.homeLayout ?? 'Statement hero';
+    const portraits = p.showPortraits ?? true;
+
+    return {
+      navEvents: page === 'events' ? 'page' : undefined,
+      navPeople: page === 'people' ? 'page' : undefined,
+      navNews: page === 'news' ? 'page' : undefined,
+      navResources: page === 'resources' ? 'page' : undefined,
+      navMerch: page === 'merch' ? 'page' : undefined,
+
+      isHome: page === 'home', isEvents: page === 'events' && !ev, isEvent: !!ev,
+      isPeople: page === 'people', isNews: page === 'news',
+      isResources: page === 'resources', isMerch: page === 'merch',
+
+      homeStatement: page === 'home' && (homeLayout === 'Statement hero' || !lead),
+      homeEventFirst: page === 'home' && homeLayout === 'Event-first' && !!lead,
+
+      stats: this.STATS, heroLogos: this.HERO_LOGOS,
+
+      leadDay: leadDate ? String(leadDate.getDate()) : '',
+      leadMonthYear: leadDate ? leadDate.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) : '',
+      leadWeekday: leadDate ? leadDate.toLocaleDateString('en-GB', { weekday: 'long' }) : '',
+      leadDateShort: leadDate ? leadDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }) : '',
+      leadInitial: lead ? lead.series.slice(0, 2).toUpperCase() : '',
+      leadSeries: lead ? lead.series : '', leadTitle: lead ? lead.title : '', leadBlurb: lead ? lead.blurb : '',
+      leadTime: lead ? lead.time : '', leadPlace: lead ? lead.place : '', leadRoute: lead ? lead.route : '#/events',
+      heroSecondary: upcoming.slice(1, 4),
+
+      standing, heroStanding: standing.slice(0, 4),
+      homeUpcoming: upcoming.slice(0, 4), hasUpcoming: upcoming.length > 0,
+      homeNews: this.NEWS.slice(0, 3).map((n) => Object.assign({}, n, {
+        dateLabel: this.dayMonth(n.date) + ' ' + this.d(n.date).getFullYear(),
+        color: this.SOURCE_COLOR[n.source] || '#2a8f98'
+      })),
+      news: this.NEWS.map((n) => Object.assign({}, n, {
+        dateLabel: this.long(n.date).replace(/^\w+, /, ''),
+        color: this.SOURCE_COLOR[n.source] || '#2a8f98'
+      })),
+
+      whenChips: [
+        chip('upcoming', 'Upcoming', s.when, (k) => this.setState({ when: k })),
+        chip('past', 'Past', s.when, (k) => this.setState({ when: k })),
+        chip('all', 'All', s.when, (k) => this.setState({ when: k }))
+      ],
+      seriesChips: seriesNames.map((n) => chip(n, n === 'all' ? 'All series' : n, s.series, (k) => this.setState({ series: k }))),
+      shownEvents, noEvents: shownEvents.length === 0,
+
+      ev, relatedEvents: ev ? standing.filter((e) => e.id !== ev.id).slice(0, 3) : [],
+
+      board: this.BOARD.map((b, i) => Object.assign({}, b, {
+        mailto: 'mailto:' + b.email, initials: this.initials(b.name),
+        slotId: 'v4-board-portrait-' + i, color: this.PALETTE[i]
+      })),
+      portraits, noPortraits: !portraits,
+      layoutDirectory: page === 'people' && layout === 'Searchable directory',
+      layoutPortfolio: page === 'people' && layout === 'Grouped by portfolio',
+      layoutCards: page === 'people' && layout === 'Portrait cards',
+      delegates, shownDelegates, noDelegates: shownDelegates.length === 0, portfolioGroups,
+      portfolioChips: ['all'].concat(portfolios).map((n) => chip(n, n === 'all' ? 'Everyone' : n, s.portfolio, (k) => this.setState({ portfolio: k }))),
+      query: s.q, onQuery: (e) => this.setState({ q: e.target.value }),
+
+      alumni: this.ALUMNI.map((a) => Object.assign({}, a, { note: a.note ? '(' + a.note + ')' : '' })),
+      alumniCount: String(this.ALUMNI.length), delegateCount: String(this.DELEGATES.length),
+      boardCount: String(this.BOARD.length), repCount: String(this.BOARD.length + this.DELEGATES.length),
+      groupCount: String(new Set(this.BOARD.concat(this.DELEGATES).map((x) => x.group)).size),
+      alumniOpen: s.alumni, alumniLabel: s.alumni ? 'Hide' : this.ALUMNI.length + ' names',
+      toggleAlumni: () => this.setState({ alumni: !s.alumni }),
+
+      resourceGroups: this.RESOURCES.map((g) => Object.assign({}, g, {
+        items: g.items.map((it) => Object.assign({ hint: '', target: undefined }, it))
+      })),
+
+      listHref: 'mailto:sofiene.khiari@unibas.ch?subject=Pharmazentrum%20PhD%20reps%20mailing%20list'
+    };
+  }
+}
+</script>
