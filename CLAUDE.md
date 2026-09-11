@@ -46,6 +46,8 @@ docs/            the website, and the only thing GitHub Pages publishes
   index.html     the whole site: markup, styles, data and logic in one file
   support.js     the Claude Design runtime (vendored, generated, never hand-edit)
   image-slot.js  the drop-an-image-here placeholder component (vendored)
+  images/retreat/  every photograph and logo taken off the retreat site
+  files/         the retreat sponsorship brochure
 decisions/       the decision record for this project, one JSON file per set of rulings
 README.md        the public-facing description
 CLAUDE.md        this file
@@ -104,6 +106,7 @@ Hash routing, parsed at lines 975 to 980, re-read on every `hashchange`.
 | `#/people` | Board, delegates, and a collapsible alumni list |
 | `#/news` | Nine dated entries, all outbound links |
 | `#/resources` | Four themed cards plus the confidential routes |
+| `#/retreat` | The PhD Retreat, in full: what it is, taking part, gallery, committee, sponsors, past editions |
 | `#/merch` | The hoodie |
 
 An unrecognised top-level hash renders the navigation bar and nothing else. An
@@ -127,6 +130,16 @@ Every dataset is a constant on the class in `docs/index.html`:
 | `EVENTS` | 907 | 8 | only things with a published date |
 | `NEWS` | 982 | 7 | the shared site's news feed |
 | `RESOURCES` | 992 | 4 | the resource cards |
+| `RETREAT_COMMITTEE` | | 7 | the 2026 organising committee, with groups and addresses |
+| `RETREAT_SPONSORS` | | 5 tiers | the sponsor wall, logo and link per company |
+| `RETREAT_ORGANISERS` | | 5 | the institution logos the old site put in its footer |
+| `RETREAT_RECENT` | | 3 | the 2025, 2024 and 2023 editions, each with a picture |
+| `RETREAT_HISTORY` | | 17 | every edition back to 2009 |
+| `RETREAT_GALLERY` | | 10 | the retreat site's photo gallery |
+| `RETREAT_GOALS`, `RETREAT_OFFER` | | 3 each | the reasons to come, and the pitch to a sponsor |
+
+The retreat constants carry no line numbers because they are new and the numbers
+above are already drifting; grep for the name instead.
 
 **`STANDING` versus `EVENTS` is the important distinction.** Almost nothing the
 representatives run has a published date: the Science Lunch, the Apéro, the BBQ
@@ -148,6 +161,36 @@ Two things are still derived rather than stored, and both are traps when editing
 The counts in the prose are no longer hardcoded: `repCount`, `boardCount`,
 `delegateCount`, `groupCount` and `alumniCount` are computed from the arrays, so
 editing the roster updates the copy.
+
+### The retreat page is a migration, not a summary
+
+`https://phd-retreat.unibas.ch/` **is being deleted.** On 11 September 2026
+Sofiene ruled that all of its content moves here, and the rule that follows from
+that is absolute: **nothing may be left on the old site that is not replicated
+on this one.** Its six pages (home, registration, sponsors, past retreats,
+about, contact) are all folded into the single `#/retreat` route, its
+photographs and sponsor logos were downloaded into `docs/images/retreat/`, and
+its sponsorship brochure sits in `docs/files/`. No link on this site points at
+that host any more.
+
+Two things could not survive the move and were replaced rather than dropped. The
+contact form and the sponsor enquiry form posted to WordPress, so they are now
+`mailto:` links to the committee member who owns that part: Yuliya Kuchkovska
+for the retreat in general, David Wang for sponsorship. Both addresses were
+already published on the retreat site.
+
+Three smaller things were judged rather than copied, and each is his to overrule.
+The old bronze row held a third logo tile that is a solid navy rectangle with
+nothing on it, so no company can be named from it; the file is kept at
+`docs/images/retreat/Design-ohne-Titel-1-1.png` but is not shown, and **there may
+be a third bronze sponsor whose logo was never uploaded.** The old about page
+printed David Wang's address as `david.wang@unibas`, missing the `.ch`, and this
+site writes the complete address so the link works. And the old past-retreats
+page put a group photograph under its "thank you to our 2023 sponsors" heading
+rather than a sponsor wall, so that picture is captioned for what it shows.
+
+If anything else on the old site turns out to be missing here, it is a defect
+rather than an editorial choice, because the original will soon be gone.
 
 ## Known defects
 
@@ -203,10 +246,14 @@ inventing one.
   site prints none: the earlier draft generated them from names, which is how
   Natasha Marion Bärenzung's would have been wrong. The two department deputies
   are named without addresses and messages route through the board.
-- **The retreat** comes from `phd-retreat.unibas.ch`: the 17th edition, Hotel La
-  Palma au Lac, 27 to 29 August 2026, registration open 7 April to 14 May, run
-  since 2009 and cancelled only in 2020, more than eighty attendees, every
-  participant presents, 1 CP for a successful participation.
+- **The retreat page** is a copy of `phd-retreat.unibas.ch`, taken on
+  11 September 2026 before that site is switched off: the 17th edition at the
+  Hotel La Palma au Lac from 27 to 29 August 2026, registration open 7 April to
+  14 May, run every year since 2009 and cancelled only in 2020, more than eighty
+  attendees, every participant presents, 1 CP for a successful participation,
+  the seven-person organising committee with their groups and addresses, all
+  five sponsor tiers with their logos and links, and every edition back to the
+  first one in Engelberg.
 - **The activities** keep the live site's own wording for how a person takes
   part, because that is the thing most easily got wrong.
 - **The social accounts** are real and taken from the live pages. The LinkedIn
