@@ -18,10 +18,17 @@ portfolio), which is why this repository is his.
 
 ## Status
 
-Draft, and it should not be treated as the department's authoritative calendar yet.
-The page was designed in Claude Design and imported; nothing has been through a
-committee sign-off, five resource links are visible placeholders, five image slots
-are empty, and the upcoming/past split runs off a frozen date. See *Known defects*.
+Draft, but the content is now real. On 11 September 2026 both live sites were
+crawled and everything on this page was rewritten against them, so the people,
+the activities, the retreat and the links are what the Pharmazentrum actually
+publishes rather than what the design brief guessed. What is still missing is
+photographs, a few verified details, and any sign-off from the committee.
+
+Scope: the old site is shared between the Biozentrum and the Pharmazentrum
+representatives, and the two are separating. This site carries the Pharmazentrum
+and the genuinely joint activities (the Science Lunch, the Lunch Lottery, the
+Career Lecture Series, the retreat, the shared social events) and leaves the
+Biozentrum's own roster and history behind.
 
 ## How it is published
 
@@ -106,138 +113,145 @@ unrecognised event id falls back to the calendar.
 
 Every dataset is a constant on the class in `docs/index.html`:
 
-| Constant | Line | Entries |
-|---|---|---|
-| `PALETTE` | 720 | 7 |
-| `SERIES_COLOR` | 722 | 7 |
-| `SOURCE_COLOR` | 726 | 3 |
-| `BOARD` | 728 | 3 |
-| `DELEGATES` | 734 | 18 |
-| `ALUMNI` | 755 | 26 |
-| `STATS` | 770 | 4 |
-| `HERO_LOGOS` | 777 | 4 |
-| `EVENTS` | 779 | 14 |
-| `NEWS` | 926 | 9 |
-| `RESOURCES` | 938 | 4 |
+| Constant | Line | Entries | What it is |
+|---|---|---|---|
+| `PALETTE` | 738 | 7 | avatar colours |
+| `SERIES_COLOR` | 740 | 7 | one colour per activity series; the key must match a `series` value exactly |
+| `SOURCE_COLOR` | 744 | 3 | news source badges |
+| `BOARD` | 749 | 3 | president, secretary, treasurer, with the only three published email addresses |
+| `DELEGATES` | 755 | 18 | the assembly, with no address, because none is published |
+| `ALUMNI` | 776 | 26 | past representatives |
+| `STATS` | 791 | 4 | the figure strip |
+| `HERO_LOGOS` | 799 | 5 | the institutes the assembly keeps a contact person for |
+| `STANDING` | 803 | 7 | what runs all year, with a `cadence` and no date |
+| `EVENTS` | 907 | 8 | only things with a published date |
+| `NEWS` | 982 | 7 | the shared site's news feed |
+| `RESOURCES` | 992 | 4 | the resource cards |
 
-Three things are derived rather than stored, and each is a trap when editing:
+**`STANDING` versus `EVENTS` is the important distinction.** Almost nothing the
+representatives run has a published date: the Science Lunch, the Apéro, the BBQ
+and the career talks come round and are announced by email a couple of weeks
+ahead. Those live in `STANDING` with a `cadence` string and no date at all, and
+`decorateStanding` (line 1061) fills the date-shaped fields with that cadence so
+the event page needs no branching. `EVENTS` holds only what was actually
+announced on a date, which today is the 2026 retreat and seven archived items.
+Do not put a guessed date in `EVENTS` to make something appear in the calendar.
 
-- **Delegate email addresses** are generated from the name by `mail()` (line 986):
-  lowercase, transliterate the umlauts, strip the remaining accents, then join the
-  first and last token with a dot before `@unibas.ch`. `DELEGATES` carries no email
-  field. Board addresses are stored literally and are the escape hatch.
-- **Board portrait slot ids** are `v4-board-portrait-<array index>` (line 1094), so
-  an image follows the position, not the person. Reorder `BOARD` and the portraits
-  swap.
-- **Board avatar colours** index `PALETTE` without a modulo (line 1094), so a fourth
-  board member would get `undefined`. The delegates version wraps correctly.
+Two things are still derived rather than stored, and both are traps when editing:
 
-Every count in the prose is a hardcoded word or numeral, not read from the arrays:
-"Twenty-one elected representatives" (line 69), "21" (line 194 and `STATS`), "Meet
-all twenty-one" (line 211), "Three on the board, eighteen in the assembly" (line
-472), "Eighteen delegates" (line 501), "Nine research groups" (line 189), and
-"Twenty-six names" (line 1105). All are right today. After the next election they
-will not be, and nothing will complain.
+- **Board portrait slot ids** are `v4-board-portrait-<array index>` (line 1122),
+  so an image follows the position, not the person. Reorder `BOARD` and the
+  portraits swap.
+- **Board avatar colours** index `PALETTE` without a modulo, so a fourth board
+  member would get `undefined`. The delegate version wraps correctly.
+
+The counts in the prose are no longer hardcoded: `repCount`, `boardCount`,
+`delegateCount`, `groupCount` and `alumniCount` are computed from the arrays, so
+editing the roster updates the copy.
 
 ## Known defects
 
 Ranked by how much damage each does if it ships as is. Line numbers are
-`docs/index.html` unless stated.
+`docs/index.html`.
 
-1. **The clock is frozen.** `const now = new Date('2026-07-31T00:00:00')` at line
-   1015 decides what counts as upcoming. Today is well past that, so events that
-   have already happened are still filed as upcoming and the home page can headline
-   one of them. The Past filter will never show them. The fix is one line, but the
-   page silently ages until someone makes it.
-2. **The mailing-list form is a stub.** `onSubscribe` (line 1114) calls
-   `preventDefault()` and sets local state. The address is never sent anywhere, yet
-   the visitor is told "You're on the list" at lines 75, 310 and 649. Three copies
-   of the form exist, at lines 70, 304 and 643. Either wire it to the list manager
-   or replace it with a mailto link before this is public.
-3. **Eighteen of the twenty-one email addresses are guesses.** See `mail()` above.
-   The likeliest to bounce is Natasha Marion Bärenzung, where the rule drops the
-   middle name and produces `natasha.baerenzung@unibas.ch`. The page's own caveat
-   about the address format only renders in the Searchable-directory layout, which
-   is not the default, so the caveat is invisible while the links are live.
-4. **Five dead resource links** carrying a visible "— link to add" hint: doctoral
-   regulations (line 943), annual progress report (944), the university ombuds
-   office (952), psychological counselling (953), and travel and conference grants
-   (960). Two of those five are the safeguarding routes, so a student in difficulty
-   follows the site's own escalation list and lands back on the same page.
-5. **Five empty image slots** render their prompt text to visitors: the group photo
-   (line 207), three board portraits (482) and the hoodie (686). They cannot be
-   filled by putting a file on the server either. `<image-slot>` persists a dropped
-   image through `window.omelette.writeFile` into a `.image-slots.state.json`
-   sidecar, and that function only exists inside the Claude Design host. On a static
-   server the slots are permanently empty and read-only. The component also
-   hardcodes `alt=""` with no way to set it. Replacing them with plain `<img>` tags
-   and real files is probably the right move, and it is a decision rather than a
-   chore.
-6. **Accessibility.** No `lang` attribute on `<html>` (line 2). Several declared
-   colours fail WCAG AA: `--muted` #86a0a9 is 2.76:1 on white and is used for event
-   times, places, dates and group names; `--faint` #b7c9cf is 1.71:1 and is every
-   form placeholder; `--teal` #2a8f98 is 3.83:1 and is the background of every
+1. **Five empty image slots** render their prompt text to visitors: the group
+   photo (line 208), three board portraits (line 508) and the hoodie (line 690).
+   They cannot be filled by putting a file on the server. `<image-slot>` persists
+   a dropped image through `window.omelette.writeFile` into a
+   `.image-slots.state.json` sidecar, and that function exists only inside the
+   Claude Design host. On a static server the slots are permanently empty and
+   read-only, and the component hardcodes `alt=""` with no way to set it.
+   Replacing them with plain `<img>` tags and real files is the right move, and
+   it is a decision rather than a chore.
+2. **Accessibility.** Several declared colours fail WCAG AA: `--muted` #86a0a9 is
+   2.76:1 on white and is used for cadences, places and group names; `--faint`
+   #b7c9cf is 1.71:1; `--teal` #2a8f98 is 3.83:1 and is the background of every
    primary button with white text at 14.5 to 15.5 px. Section labels are `<span>`
    rather than headings, so the visual hierarchy is invisible to a screen reader,
-   and the three board members sit at `<h2>` alongside the section holding the other
-   eighteen. The alumni toggle (line 569) has no `aria-expanded`. No
+   and the three board members sit at `<h2>` alongside the section holding the
+   other eighteen. The alumni toggle has no `aria-expanded`. There is no
    `prefers-reduced-motion` guard on the `lift` animation (line 43) or the global
-   smooth scrolling (line 28).
-7. **Client-render fragility.** `support.js` hides the template before it fetches
-   React. If unpkg is blocked, the visitor gets a blank white page with no message;
-   if `support.js` itself fails to load, they get raw markup full of literal
-   `{{ leadTitle }}`. There is no `<noscript>`. One static `<title>`, no meta
-   description, no Open Graph tags and no favicon, so every shared link previews
-   identically, which undercuts a site whose distribution model is pasting event
-   links into chat.
-8. **Two prose claims contradict the data.** The alumni panel says "the fifteen who
-   started the thing" (line 576) against thirteen entries annotated Co-founder. The
-   reps page says one delegate per research group (line 472) while Molecular and
-   Systems Toxicology has five and Pharmaceutical Technology has one.
-9. **Narrow-phone overflow, unmeasured.** Four row layouts use fixed grid columns
-   with nowrap content (lines 225, 377, 516, 603). The events row is estimated at
-   about 320 px minimum against about 284 px of usable width at a 320 px viewport.
-   One resize test would settle it.
-10. **CSP.** The runtime uses `new Function`, runtime `insertRule`, and inline styles
-    on nearly every element, so any strict Content Security Policy needs
-    `unsafe-eval` and `unsafe-inline`. Worth raising before a hosting conversation
-    with university IT, not after.
+   smooth scrolling (line 28). The `lang` attribute is now set.
+3. **Client-render fragility.** `support.js` hides the template before it fetches
+   React. If unpkg is blocked, the visitor gets a blank white page with no
+   message; if `support.js` itself fails to load, they get raw markup full of
+   literal `{{ leadTitle }}`. There is no `<noscript>`. One static `<title>`, no
+   meta description, no Open Graph tags and no favicon, so every shared link
+   previews identically, which undercuts a site whose distribution model is
+   pasting links into chat.
+4. **Narrow-phone overflow, unmeasured.** Four row layouts use fixed grid columns
+   with nowrap content. One resize test at 320 px and 390 px would settle it.
+5. **CSP.** The runtime uses `new Function`, runtime `insertRule`, and inline
+   styles on nearly every element, so any strict Content Security Policy needs
+   `unsafe-eval` and `unsafe-inline`. Worth raising before the hosting
+   conversation with university IT, not after.
 
-The two console errors on load are benign: a 404 for the image-slot sidecar, which
-the component swallows, and a 404 for a favicon that does not exist.
+The two console errors on load are benign: a 404 for the image-slot sidecar,
+which the component swallows, and a 404 for a favicon that does not exist.
+
+## What the content rests on
+
+Everything on the page now traces to one of two live sites, crawled on
+11 September 2026. Where a fact was not published, the page says so rather than
+inventing one.
+
+- **The roster** comes from the shared site's Pharmazentrum page, which is headed
+  "Spring 2025" over a block headed "Board members 2024". The reps page says so,
+  so a stale list does not read as current.
+- **Only the board publishes an address** (`diell.aliu@`, `alessandra.cavegn@`,
+  `jannes.felsch@`, all `unibas.ch`). The eighteen delegates publish none, so this
+  site prints none: the earlier draft generated them from names, which is how
+  Natasha Marion Bärenzung's would have been wrong. The two department deputies
+  are named without addresses and messages route through the board.
+- **The retreat** comes from `phd-retreat.unibas.ch`: the 17th edition, Hotel La
+  Palma au Lac, 27 to 29 August 2026, registration open 7 April to 14 May, run
+  since 2009 and cancelled only in 2020, more than eighty attendees, every
+  participant presents, 1 CP for a successful participation.
+- **The activities** keep the live site's own wording for how a person takes
+  part, because that is the thing most easily got wrong.
+- **The social accounts** are real and taken from the live pages. The LinkedIn
+  page is the Pharmazentrum's; Instagram and Bluesky are the shared Biozentrum
+  accounts, and the footer says so.
+- **One assumption, flagged.** Sofiene Khiari replaces Roman Aschwanden in the
+  Computational Pharmacy seat with the Website portfolio, carrying over Roman's
+  research group. If Roman is still a delegate and only handed over the website,
+  the fix is to add a row rather than replace one.
 
 ## Open questions, his to rule
 
-- Consent. Twenty-one current reps are published with clickable addresses and
-  twenty-six alumni are named, some with roles, several long gone. Is there a
-  university policy, and would a single `phd-reps@unibas.ch` alias be better than
-  twenty-one individual mailtos?
-- Are the eighteen derived addresses correct? Someone with the real list has to
-  confirm them, or `DELEGATES` should carry explicit email fields.
-- Is `lunch-lottery@unibas.ch` (line 816) a real alias? It is the only non-personal
-  address on the site and the sole signup route for that event.
-- Should the Instagram and Bluesky links point at the Biozentrum accounts (lines
-  336, 337, 597)? The LinkedIn one is the Pharmazentrum's. Either they are shared
-  channels and the labels should say so, or they are a carry-over.
-- Where should the mailing-list form post?
-- Is the autumn 2026 calendar confirmed? Six of the eight future events carry
-  `provisional: true` and the retreat still says "Venue to be confirmed".
+- Consent. Twenty-one current representatives are named and twenty-six alumni
+  are named, some with roles and several long gone. Is there a university policy,
+  and should the three board addresses be replaced by a single alias?
+- The roster is dated Spring 2025. Who is actually on the board and in the
+  assembly now?
+- Is the Career Lecture Series still run with the Postdoc Club, and are Dibya
+  Saha, Daan Overwijn, Camila Pulido Barrera and Máté Balajti still its contacts?
+  The site currently points speaker offers at the first of them.
+- The Pharm Apéro, the Summer BBQ and the Seminar in Drug Sciences have almost no
+  published content: a name and a portfolio each. Anything you can add is more
+  than the live site has.
+- Is the hoodie order still open? The live page gives 25 November with no year.
 - Architecture. Keeping the Claude Design runtime costs resilience, SEO, link
-  previews, CSP compatibility and the ability to fill the image slots. A prerendered
-  static build would fix all five and cost the round trip back to the design tool.
-  This is the largest fork in the project and it has not been decided.
+  previews, CSP compatibility and the ability to fill the image slots. A
+  prerendered static build would fix all five and cost the round trip back to the
+  design tool. This is the largest fork in the project and it has not been
+  decided.
 
 ## Working in this repository
 
 - The design lives in Claude Design project `473998c6-788d-40f2-864b-26e900bdb3a5`,
-  where the source file is `PhD Reps Pharmazentrum v4.dc.html`. This repository holds
-  a copy renamed to `docs/index.html`. There is no sync in either direction: editing
-  here does not update the canvas, and re-importing would overwrite whatever has been
-  fixed here. Decide which one is the source before doing either.
+  where the source file is `PhD Reps Pharmazentrum v4.dc.html`. This repository
+  holds a copy renamed to `docs/index.html`, and it has since diverged
+  substantially. **This repository is now the source.** Re-importing from the
+  canvas would throw away the content pass.
 - `support.js` and `image-slot.js` are generated bundles. Never hand-edit them.
-- This is not a research repository. There is no `LOG.jsonl`, no `STAGE.yaml` and no
-  hypothesis register, and `.claude-no-record` records that ruling (see
-  `decisions/round-01.answers.json`, D1). Decision ownership still applies: a choice
-  with a defensible why is surfaced and recorded in `decisions/` like anywhere else.
-- Pushing to `main` publishes. The page names real people, so treat a push the way
-  you would treat sending an email on their behalf.
+- The crawled text of both live sites is not committed. Re-crawling is cheap:
+  a breadth-first fetch of both hosts, saved as one text file per page, is how
+  the content pass was grounded.
+- This is not a research repository. There is no `LOG.jsonl`, no `STAGE.yaml` and
+  no hypothesis register, and `.claude-no-record` records that ruling (see
+  `decisions/round-01.answers.json`, D1). Decision ownership still applies: a
+  choice with a defensible why is surfaced and recorded in `decisions/` like
+  anywhere else.
+- Pushing to `main` publishes. The page names real people, so treat a push the
+  way you would treat sending an email on their behalf.

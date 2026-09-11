@@ -11,9 +11,14 @@ doctoral student tends to need, and the merchandise order.
 
 ## Status
 
-Draft. The page was designed in Claude Design and imported here, so several links
-are still placeholders and the photographs have not been added. Nothing has been
-signed off by the committee.
+Draft, but the content is real. The page was designed in Claude Design and then
+rewritten against what the representatives actually publish, so the people, the
+activities, the retreat and the links are current as of 11 September 2026. Still
+missing: photographs, and any sign-off from the committee.
+
+The old site is shared with the Biozentrum representatives and the two are
+separating. This one carries the Pharmazentrum and the activities the two run
+together.
 
 ## How it is published
 
