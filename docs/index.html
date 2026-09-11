@@ -747,12 +747,13 @@ class Component extends DCLogic {
   // seven flat inks, ordered so that two cards next to each other never share a hue.
   // Every one carries white text at 5:1 or better, which is what lets the same set
   // serve as avatar grounds and as series badges.
-  PALETTE = ['#5d6cc3', '#ba542c', '#358150', '#8f5cbb', '#14807e', '#d03a52', '#9b6810'];
+  PALETTE = ['#5d6cc3', '#ba542c', '#358150', '#8f5cbb', '#14807e', '#d03a52', '#9b6810', '#3178aa'];
 
   // one ink per series, so the colour actually tells you which thing you are looking at
   SERIES_COLOR = {
     'Science Lunch': '#ba542c', 'Lunch Lottery': '#9b6810', 'Social': '#358150',
-    'PhD Retreat': '#5d6cc3', 'Career': '#8f5cbb', 'Seminar': '#14807e', 'Merchandise': '#d03a52'
+    'PhD Retreat': '#5d6cc3', 'Career': '#8f5cbb', 'Seminar': '#14807e',
+    'Symposium': '#3178aa', 'Merchandise': '#d03a52'
   };
   SOURCE_COLOR = { Instagram: '#d03a52', LinkedIn: '#5d6cc3', Site: '#6b6f7c' };
 
@@ -883,6 +884,51 @@ class Component extends DCLogic {
       ],
       signupNote: 'No registration. If you can help set up or clear away, write to Manuel, Michael or Alessandra.',
       signupLabel: 'Offer to help', signupHref: 'mailto:alessandra.cavegn@unibas.ch?subject=Summer%20BBQ%20—%20I%20can%20help'
+    },
+    {
+      id: 'industry-day', series: 'Career', title: 'Industry Day',
+      cadence: 'Announced by email; the 2025 editions ran through the autumn',
+      place: 'Announced with each edition, and at least one was hosted at a company',
+      who: 'Anna Bollinger and Maria Karpouchtsi hold career events for the assembly',
+      cost: 'Not published',
+      blurb: 'A day spent with people who do the work you might do next. Novartis hosted one of the 2025 editions.',
+      body: [
+        'The Industry Day puts PhD students in front of people working in industry, on the industry’s own ground. The 2025 series was announced as bridging academia and industry, and one of its editions was hosted by Novartis.',
+        'Beyond that, this page knows what the announcements said and no more. Dates, programme and how to take part come by email.'
+      ],
+      signupNote: 'Watch your inbox. The most recent announcement is on LinkedIn.',
+      signupLabel: 'The 2025 announcement',
+      signupHref: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_industry-day-2025-bridging-academia-and-industry-activity-7392483897604841472-_wGn'
+    },
+    {
+      id: 'phz-swiss-tph-symposium', series: 'Symposium', title: 'PHZ x Swiss TPH PhD Symposium',
+      cadence: 'Announced by email; the last one ran in May 2026',
+      place: 'Not published',
+      who: 'Run with the Swiss TPH. Seraina Moser is the assembly’s contact there.',
+      cost: 'Not published',
+      blurb: 'A joint symposium with the Swiss Tropical and Public Health Institute.',
+      body: [
+        'One of two symposia the assembly runs with a neighbouring institute, and the reason it keeps a named contact person at each. This one is with the Swiss TPH.',
+        'The announcement went out a week ahead in May 2026. Programme and registration come by email.'
+      ],
+      signupNote: 'Watch your inbox. The most recent announcement is on LinkedIn.',
+      signupLabel: 'The 2026 announcement',
+      signupHref: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_phz-x-swiss-tph-phd-symposium-one-week-activity-7456280781481680896-wPR6'
+    },
+    {
+      id: 'pharma-chemistry-symposium', series: 'Symposium', title: 'Pharma x Chemistry Symposium',
+      cadence: 'Announced by email; the last one ran in October 2025',
+      place: 'Not published',
+      who: 'Run with Chemistry. Frido Joos is the assembly’s contact there.',
+      cost: 'Not published',
+      blurb: 'A joint symposium with the Department of Chemistry.',
+      body: [
+        'The other of the two symposia with a neighbouring department, this one with Chemistry.',
+        'The announcement went out a fortnight ahead in October 2025. Programme and registration come by email.'
+      ],
+      signupNote: 'Watch your inbox. The most recent announcement is on LinkedIn.',
+      signupLabel: 'The 2025 announcement',
+      signupHref: 'https://www.linkedin.com/posts/phd-students-pharma-unibas_pharma-x-chemistry-symposium-two-weeks-activity-7381273055475625984-7t09'
     },
     {
       id: 'seminar-drug-sciences', series: 'Seminar', title: 'Seminar in Drug Sciences',
