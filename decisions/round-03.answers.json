@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.1",
+  "round": "round-03",
+  "mechanism": "inline",
+  "mechanismNote": "Inline mechanism per D203/D204. Raised 2026-09-11, immediately after D2, when saving the LinkedIn company page to disk did not work for him and the material option 4 depends on therefore did not exist.",
+  "revision": 1,
+  "updated": "2026-09-11T13:20:00.000Z",
+  "handedBack": false,
+  "readback": "D3 answered as 'let's go with option 1 for now instead', which names an option from the D2 set by number, so no further read-back was needed. The word 'for now' is recorded as part of the ruling: this parks option 4 rather than rejecting it.",
+  "claims": [],
+  "codeReview": "",
+  "outputReview": "",
+  "finalComments": "Supersedes D2 for the time being. The two are compatible by construction: option 1 adds an optional picture field to a news entry, which is the same field option 4 would need, so nothing built here is thrown away if he returns to option 4. No picture exists yet, so the page renders exactly as it did before and improves one entry at a time as pictures arrive.",
+  "answers": {
+    "D3": {
+      "question": "Saving the LinkedIn company page to disk did not work, so the posts and photographs option 4 depends on are not available. What happens to the news page now?",
+      "choice": "1",
+      "label": "Index with a thumbnail",
+      "other": "",
+      "why": "",
+      "endorsed": true,
+      "options": [
+        {
+          "label": "Index with a thumbnail",
+          "text": "Each entry keeps its title, date and link out, and gains one image where one exists.",
+          "for": "One new field per entry, and no post text or photograph is copied onto the site.",
+          "against": "A reader leaves the site to read anything, and an entry stops working if its post is removed."
+        },
+        {
+          "label": "Embedded LinkedIn posts",
+          "text": "Each entry is LinkedIn's own embed, rendering the post inside the page.",
+          "for": "Nothing is copied or hosted, and an edited post updates itself.",
+          "against": "The official embed is per post rather than a live feed; the embeds are third-party frames, which carries cookie and tracking implications for a university site; and they will not render in the artifact preview."
+        },
+        {
+          "label": "Photographs in their own section",
+          "text": "Photographs grouped by event, with the news index left as it is.",
+          "for": "The photographs get a layout sized for them rather than a list row.",
+          "against": "Two places to keep current instead of one, and the images are hosted from the repository."
+        },
+        {
+          "label": "The posts on the page",
+          "text": "Photograph, text and date rendered by the site itself. Chosen in D2 and parked here.",
+          "for": "No third party involved and no outward click.",
+          "against": "Blocked: it needs the saved page, which is what would not work."
+        }
+      ]
+    }
+  }
+}
