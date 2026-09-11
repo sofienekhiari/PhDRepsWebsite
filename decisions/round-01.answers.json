@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.1",
+  "round": "round-01",
+  "mechanism": "inline",
+  "mechanismNote": "Inline mechanism per D203/D204. First set of rulings for the PhDRepsWebsite project, raised 2026-09-11 when the design was downloaded from Claude Design and the end-of-turn record check fired with nothing to write.",
+  "revision": 1,
+  "updated": "2026-09-11T11:00:00.000Z",
+  "handedBack": false,
+  "readback": "D1 answered by bare option number, so no D282 read-back was required.",
+  "claims": [],
+  "codeReview": "",
+  "outputReview": "",
+  "finalComments": "",
+  "answers": {
+    "D1": {
+      "question": "This folder is a website rather than computational research, so the end-of-turn record check has no LOG.jsonl or STAGE.yaml to write and will keep firing. Should a .claude-no-record marker file be added at the project root to silence it for good?",
+      "choice": "1",
+      "label": "Add it",
+      "other": "",
+      "why": "",
+      "endorsed": true,
+      "options": [
+        {
+          "label": "Add it",
+          "text": "Write a .claude-no-record file at the project root, which tells the research-log-reminder hook that this project will never keep a research record.",
+          "for": "The check cannot be satisfied here, so every turn in this repo would otherwise end on a reminder that has nothing to act on, and a reminder that always fires is one that stops being read.",
+          "against": "It is a permanent opt-out: if the project ever did grow a research component, the silence would be inherited and nobody would notice the check was gone."
+        },
+        {
+          "label": "Leave it, and live with the reminder",
+          "text": "Add nothing, and let the record check fire at the end of every turn in this project.",
+          "for": "Nothing is silenced, so a genuinely gated choice in this repo still meets a prompt asking for it to be recorded.",
+          "against": "The noise falls on every turn regardless of whether anything happened, which is the pattern that trains a reminder to be ignored."
+        }
+      ]
+    }
+  }
+}
