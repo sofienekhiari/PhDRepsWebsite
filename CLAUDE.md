@@ -254,10 +254,13 @@ reads it with the artifact tool's `comments` action.
 change that touches the structure rather than the wording, he says here instead.
 
 **What happens on either.** Edit `docs/index.html`, rebuild the artifact,
-republish it to the same URL, commit, and push. That is the whole loop and it is
-not something to check back about each time: he has asked for it as the standing
-routine. Reply on the comment thread saying what changed and resolve it, so the
-page shows what was acted on.
+republish it to the same URL, commit, and push. Every edit, every time, without
+asking first. **The push is included and it is not a separate decision** (D4):
+this is a small website for a student body, so the stakes of publishing a change
+are low, and the cost of a wrong word sitting live for an hour is smaller than
+the cost of him having to come back and say "push it" after each one. Reply on
+the comment thread saying what changed and resolve it, so the page shows what was
+acted on.
 
 ```
 python3 build-artifact.py        # regenerates artifact/index.html from docs/
@@ -302,5 +305,7 @@ the artifact link, or the artifact is republished, before comments reach anyone.
   `decisions/round-01.answers.json`, D1). Decision ownership still applies: a
   choice with a defensible why is surfaced and recorded in `decisions/` like
   anywhere else.
-- Pushing to `main` publishes. The page names real people, so treat a push the
-  way you would treat sending an email on their behalf.
+- Pushing to `main` publishes, and under D4 a push follows every edit as a matter
+  of course. The care belongs one step earlier: the page names real people, so
+  think hard before *adding* someone's name, address or photograph, and not at
+  all about publishing a change he asked for.

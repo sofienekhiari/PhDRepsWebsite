@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.1",
+  "round": "round-04",
+  "mechanism": "inline",
+  "mechanismNote": "Inline mechanism per D203/D204. Not a question that was put to him: he volunteered the rule, so it is recorded under D227 with an empty options list and his reasoning in his own terms.",
+  "revision": 1,
+  "updated": "2026-09-11T13:45:00.000Z",
+  "handedBack": false,
+  "readback": "Recorded from his own words and told to him in one line, per D227.",
+  "claims": [],
+  "codeReview": "",
+  "outputReview": "",
+  "finalComments": "Resolves a contradiction this created in CLAUDE.md, which previously told a session to treat a push the way it would treat sending an email on the representatives' behalf. That caution is not deleted but moved to where it belongs: adding a person's name, address or photograph to the page, rather than publishing an edit he asked for.",
+  "answers": {
+    "D4": {
+      "question": "Does a push follow every edit automatically, or is publishing a separate decision each time?",
+      "choice": "volunteered",
+      "label": "Commit and push on every edit",
+      "other": "",
+      "why": "since it's a small website for some students, the publishing stakes are not that high, so every time you do an edit you should commit and push",
+      "endorsed": false,
+      "options": []
+    }
+  }
+}
