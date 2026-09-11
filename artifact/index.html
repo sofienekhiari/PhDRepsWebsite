@@ -67,17 +67,11 @@ window.__resources = {
   <header style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(40px,6vw,88px) 0 clamp(40px,5vw,72px)">
     <div style="flex:1 1 440px;animation:lift 700ms cubic-bezier(.2,.7,.2,1) both">
       <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:22px">PhD Representatives · Pharmazentrum</span>
-      <h1 style="font-weight:700;font-size:clamp(42px,6.4vw,86px);line-height:1.02;letter-spacing:-0.04em;margin:0;color:var(--navy);max-width:16ch">You’re not doing your PhD alone.</h1>
+      <h1 style="font-weight:700;font-size:clamp(42px,6.4vw,86px);line-height:1.02;letter-spacing:-0.04em;margin:0;color:var(--navy);max-width:16ch">We’re here to support you with your PhD.</h1>
       <p style="font-size:clamp(17px,1.4vw,19px);line-height:1.62;max-width:47ch;margin:26px 0 0;color:var(--body)">{{ repCount }} PhD representatives of the Pharmazentrum: a board of {{ boardCount }} and an assembly of {{ delegateCount }} delegates from {{ groupCount }} research groups. We run the Science Lunch, the Lunch Lottery and the retreat with the Biozentrum, and we are the people to tell when something isn’t working.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:34px">
         <a href="{{ listHref }}" style="display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:var(--teal);color:#fff;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none" style-hover="background:var(--teal-dark)">Get the announcements <span aria-hidden="true">↗</span></a>
         <a href="#/events" style="display:inline-flex;align-items:center;padding:14px 26px;border:1px solid var(--line);color:var(--navy);border-radius:999px;font-weight:600;font-size:15px;text-decoration:none" style-hover="border-color:var(--teal-light)">What we run</a>
-      </div>
-      <p style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin:40px 0 14px">We keep a contact person for</p>
-      <div style="display:flex;flex-wrap:wrap;gap:14px 32px;align-items:center">
-        <sc-for list="{{ heroLogos }}" as="l" hint-placeholder-count="3">
-          <span style="font-weight:700;font-size:16px;letter-spacing:-0.02em;color:var(--muted)">{{ l }}</span>
-        </sc-for>
       </div>
     </div>
     <div style="flex:1 1 420px;animation:lift 800ms 120ms cubic-bezier(.2,.7,.2,1) both">
@@ -788,9 +782,6 @@ class Component extends DCLogic {
     { value: 'CHF 0', label: 'To take part in most of what we run' }
   ];
 
-  // the departments and institutes the assembly keeps a named contact person for
-  HERO_LOGOS = ['Biozentrum', 'D-BSSE', 'DBM', 'Tropeninstitut', 'Chemistry'];
-
   // What runs all year. None of these has a published date, so none is given one:
   // they are announced by email as they come round.
   STANDING = [
@@ -1113,7 +1104,7 @@ class Component extends DCLogic {
       homeStatement: page === 'home' && (homeLayout === 'Statement hero' || !lead),
       homeEventFirst: page === 'home' && homeLayout === 'Event-first' && !!lead,
 
-      stats: this.STATS, heroLogos: this.HERO_LOGOS,
+      stats: this.STATS,
 
       leadDay: leadDate ? String(leadDate.getDate()) : '',
       leadMonthYear: leadDate ? leadDate.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) : '',
