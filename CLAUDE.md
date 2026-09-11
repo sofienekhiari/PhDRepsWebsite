@@ -212,18 +212,18 @@ inventing one.
 - **The social accounts** are real and taken from the live pages. The LinkedIn
   page is the Pharmazentrum's; Instagram and Bluesky are the shared Biozentrum
   accounts, and the footer says so.
-- **One assumption, flagged.** Sofiene Khiari replaces Roman Aschwanden in the
-  Computational Pharmacy seat with the Website portfolio, carrying over Roman's
-  research group. If Roman is still a delegate and only handed over the website,
-  the fix is to add a row rather than replace one.
+- **Sofiene Khiari holds the Computational Pharmacy seat** with the Website
+  portfolio. Roman Aschwanden had it before him, from the same research group,
+  and has since graduated, so he moved to the alumni list rather than out of the
+  roster. Confirmed by Sofiene on 11 September 2026.
 
 ## Open questions, his to rule
 
 - Consent. Twenty-one current representatives are named and twenty-six alumni
   are named, some with roles and several long gone. Is there a university policy,
   and should the three board addresses be replaced by a single alias?
-- The roster is dated Spring 2025. Who is actually on the board and in the
-  assembly now?
+- The roster is dated Spring 2025 and one seat has already turned over since.
+  Who is actually on the board and in the assembly now?
 - Is the Career Lecture Series still run with the Postdoc Club, and are Dibya
   Saha, Daan Overwijn, Camila Pulido Barrera and Máté Balajti still its contacts?
   The site currently points speaker offers at the first of them.
