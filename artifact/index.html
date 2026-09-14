@@ -424,6 +424,9 @@ window.__resources = {
         <sc-if value="{{ ev.provisional }}">
           <p style="font-weight:600;font-size:14.5px;margin:20px 0 0;color:var(--accent-light)">Date still provisional — confirmed on the mailing list.</p>
         </sc-if>
+        <sc-if value="{{ ev.announcedOnly }}">
+          <p style="font-weight:600;font-size:14.5px;margin:20px 0 0;color:var(--accent-light)">The date shown is the day this was announced. The announcement does not say when the event itself was.</p>
+        </sc-if>
       </div>
       <aside style="flex:1 1 300px;background:var(--white);border-radius:var(--r-lg);padding:clamp(26px,3vw,36px);box-shadow:var(--shadow-sm);display:flex;flex-direction:column">
         <span style="display:block;font-weight:600;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px">Take part</span>
@@ -438,7 +441,7 @@ window.__resources = {
 
   <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:16px">
     <div style="background:var(--white);border-radius:var(--r-md);padding:22px 22px 24px;box-shadow:var(--shadow-sm)">
-      <span style="display:block;font-weight:600;font-size:12px;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">When</span>
+      <span style="display:block;font-weight:600;font-size:12px;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">{{ ev.whenHeading }}</span>
       <span style="font-weight:500;font-size:16px;line-height:1.45;color:var(--deep)">{{ ev.whenLabel }}</span>
     </div>
     <div style="background:var(--white);border-radius:var(--r-md);padding:22px 22px 24px;box-shadow:var(--shadow-sm)">
@@ -606,7 +609,7 @@ window.__resources = {
   <header style="padding:clamp(40px,5vw,84px) 0 0;max-width:660px">
     <span style="display:block;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:18px">News</span>
     <h1 style="font-weight:700;font-size:clamp(40px,6vw,80px);line-height:1.02;letter-spacing:-0.04em;margin:0;color:var(--deep)">Posted</h1>
-    <p style="font-size:clamp(17px,1.4vw,19px);line-height:1.62;margin:22px 0 0;color:var(--body)">What we have posted, newest first, each entry linking straight to the original. The LinkedIn page is ours; the Instagram and Bluesky accounts are shared with the Biozentrum.</p>
+    <p style="font-size:clamp(17px,1.4vw,19px);line-height:1.62;margin:22px 0 0;color:var(--body)">What we have posted, newest first, each entry linking straight to the original. A LinkedIn post has no title, so the headings below are ours, summarising each one; the dates are read out of the post itself. The LinkedIn page is ours; the Instagram and Bluesky accounts are shared with the Biozentrum.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px">
       <a href="https://www.linkedin.com/company/phd-students-pharma-unibas" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:14px 24px;background:var(--white);border:1px solid var(--line);color:var(--deep);font-weight:600;font-size:15px;text-decoration:none;border-radius:999px" style-hover="border-color:var(--accent-light)">LinkedIn ↗</a>
       <a href="https://www.instagram.com/biozentrum_phds/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;padding:14px 24px;background:var(--white);border:1px solid var(--line);color:var(--deep);font-weight:600;font-size:15px;text-decoration:none;border-radius:999px" style-hover="border-color:var(--accent-light)">Instagram ↗</a>
@@ -629,7 +632,7 @@ window.__resources = {
         </a>
       </sc-for>
       <h2 style="font-weight:700;font-size:clamp(22px,2.4vw,30px);line-height:1.1;letter-spacing:-0.03em;margin:40px 0 6px;color:var(--deep)">Before that</h2>
-      <p style="font-size:15.5px;line-height:1.6;margin:0 0 20px;color:var(--muted)">Announcements from the site the two departments shared.</p>
+      <p style="font-size:15.5px;line-height:1.6;margin:0 0 20px;color:var(--muted)">Announcements from the site the two departments shared. These dates are the days the announcements went up, which is not always the day of the event; the calendar carries the event dates.</p>
     </sc-if>
     <sc-if value="{{ noPosts }}">
       <p style="font-size:15.5px;line-height:1.6;margin:0 0 20px;color:var(--muted)">Nothing from LinkedIn here yet. Below is what the shared site announced.</p>
@@ -926,7 +929,7 @@ window.__resources = {
   <section style="padding:clamp(44px,5vw,84px) 0 0">
     <span style="display:block;font-weight:600;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Past retreats</span>
     <h2 style="font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:1.06;letter-spacing:-0.035em;margin:0;color:var(--deep)">Every year since 2009</h2>
-    <p style="font-size:16.5px;line-height:1.66;max-width:56ch;margin:18px 0 30px;color:var(--body)">Somewhere in Switzerland, every year, with one gap: 2020 did not happen.</p>
+    <p style="font-size:16.5px;line-height:1.66;max-width:56ch;margin:18px 0 30px;color:var(--body)">Somewhere in Switzerland, every year, with one gap: 2020 did not happen. The 2026 edition ran from 27 to 29 August at the Hotel La Palma au Lac in Locarno-Muralto.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
       <sc-for list="{{ retreatRecent }}" as="r" hint-placeholder-count="3">
         <div style="background:var(--white);border-radius:var(--r-lg);padding:28px 26px 30px;box-shadow:var(--shadow-sm)">
@@ -944,7 +947,7 @@ window.__resources = {
       <div style="flex:0 0 150px;aspect-ratio:3 / 4;border-radius:var(--r-sm);overflow:hidden;background:var(--pale)">
         <img src="{{ retreatBuilding }}" alt="The Biozentrum building at dusk" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" />
       </div>
-      <p style="flex:1 1 240px;font-size:16px;line-height:1.66;margin:0;color:var(--body)">And many more. Sixteen retreats between 2009 and 2025, in twelve different places across Switzerland. The 2026 edition is the seventeenth.</p>
+      <p style="flex:1 1 240px;font-size:16px;line-height:1.66;margin:0;color:var(--body)">And many more. Seventeen retreats since 2009, in thirteen different places across Switzerland. 2020 is the only year without one.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin-top:14px">
       <sc-for list="{{ retreatHistory }}" as="h" hint-placeholder-count="17">
@@ -1131,14 +1134,14 @@ class Component extends DCLogic {
     },
     {
       id: 'industry-day', series: 'Career', title: 'Industry Day',
-      cadence: 'Announced by email; the 2025 editions ran through the autumn',
+      cadence: 'Announced by email; the 2025 editions ran in the last months of the year',
       place: 'Announced with each edition, and at least one was hosted at a company',
       who: 'Anna Bollinger and Maria Karpouchtsi hold career events for the assembly',
       cost: 'Not published',
       blurb: 'A day spent with people who do the work you might do next. Novartis hosted one of the 2025 editions.',
       body: [
-        'The Industry Day puts PhD students in front of people working in industry, on the industry’s own ground. The 2025 series was announced as bridging academia and industry, and one of its editions was hosted by Novartis.',
-        'Beyond that, this page knows what the announcements said and no more. Dates, programme and how to take part come by email.'
+        'The Industry Day puts PhD students in front of people working in industry, on the industry’s own ground. The 2025 series was announced as bridging academia and industry on 7 November 2025, and on 19 December 2025 the reps wrote that Novartis had hosted the last one of the year.',
+        'Beyond that, this page knows what the announcements said and no more: neither post gives the date of the day itself. Dates, programme and how to take part come by email.'
       ],
       signupNote: 'Watch your inbox. The most recent announcement is on LinkedIn.',
       signupLabel: 'The 2025 announcement',
@@ -1146,14 +1149,14 @@ class Component extends DCLogic {
     },
     {
       id: 'phz-swiss-tph-symposium', series: 'Symposium', title: 'PHZ x Swiss TPH PhD Symposium',
-      cadence: 'Announced by email; the last one ran in May 2026',
+      cadence: 'Announced by email; the last one was announced for mid-May 2026',
       place: 'Not published',
       who: 'Run with the Swiss TPH. Seraina Moser is the assembly’s contact there.',
       cost: 'Not published',
       blurb: 'A joint symposium with the Swiss Tropical and Public Health Institute.',
       body: [
         'One of two symposia the assembly runs with a neighbouring institute, and the reason it keeps a named contact person at each. This one is with the Swiss TPH.',
-        'The announcement went out a week ahead in May 2026. Programme and registration come by email.'
+        'The announcement went out on 2 May 2026 saying there was one week to go, which puts the symposium itself in the middle of that month. Programme and registration come by email.'
       ],
       signupNote: 'Watch your inbox. The most recent announcement is on LinkedIn.',
       signupLabel: 'The 2026 announcement',
@@ -1161,14 +1164,14 @@ class Component extends DCLogic {
     },
     {
       id: 'pharma-chemistry-symposium', series: 'Symposium', title: 'Pharma x Chemistry Symposium',
-      cadence: 'Announced by email; the last one ran in October 2025',
+      cadence: 'Announced by email; the last one was announced for late October 2025',
       place: 'Not published',
       who: 'Run with Chemistry. Frido Joos is the assembly’s contact there.',
       cost: 'Not published',
       blurb: 'A joint symposium with the Department of Chemistry.',
       body: [
         'The other of the two symposia with a neighbouring department, this one with Chemistry.',
-        'The announcement went out a fortnight ahead in October 2025. Programme and registration come by email.'
+        'The announcement went out on 7 October 2025 saying there was a fortnight to go, which puts the symposium itself around the 21st. Programme and registration come by email.'
       ],
       signupNote: 'Watch your inbox. The most recent announcement is on LinkedIn.',
       signupLabel: 'The 2025 announcement',
@@ -1222,58 +1225,74 @@ class Component extends DCLogic {
       signupLabel: 'The retreat page', signupHref: '#/retreat'
     },
     {
-      id: 'retreat-2023', series: 'PhD Retreat', title: 'PhD Retreat 2023', date: '2023-10-09',
-      time: 'Three days', place: 'Hotel Sunstar, Davos', who: 'The 2023 committee', cost: 'Ticketed', provisional: false,
-      blurb: 'The 14th retreat, at the Hotel Sunstar in Davos.',
-      body: ['Announced on the shared site at the time. The full history of the retreat is on the retreat page.'],
+      id: 'retreat-2023', series: 'PhD Retreat', title: 'PhD Retreat 2023', date: '2023-09-07',
+      time: 'Three days, 7 to 9 September', place: 'Sunstar Hotel, Davos', who: 'The 2023 committee', cost: 'Ticketed', provisional: false,
+      blurb: 'The 14th retreat, at the Sunstar Hotel in Davos.',
+      body: ['The 14th PhD Retreat took place from the 7th to the 9th of September 2023, at the Sunstar Hotel in the mountains at Davos. The full history of the retreat is on the retreat page.'],
       signupNote: 'This event has passed.', signupLabel: 'Original announcement',
       signupHref: 'https://phdstudents.biozentrum.unibas.ch/phd-retreat-2023/'
     },
     {
       id: 'science-lunch-2022', series: 'Science Lunch', title: 'PhD Science Lunch', date: '2022-04-05',
       time: '12:00', place: 'Biozentrum, Science Lounge', who: 'The organisers', cost: 'Free', provisional: false,
+      announcedOnly: true,
       blurb: 'A past edition of the monthly Science Lunch.',
-      body: ['Announced on the shared site at the time.'],
+      body: ['The shared site posted this on 5 April 2022 and does not say which day the lunch itself was.'],
       signupNote: 'This event has passed.', signupLabel: 'Original announcement',
       signupHref: 'https://phdstudents.biozentrum.unibas.ch/phd-science-lunch-2/'
     },
     {
-      id: 'career-2021', series: 'Career', title: 'Career Lecture — Modern career pathways', date: '2021-09-08',
-      time: '', place: '', who: 'The career events team', cost: 'Free', provisional: false,
+      id: 'career-2021', series: 'Career', title: 'Career Lecture — Modern career pathways', date: '2021-09-20',
+      time: '17:30', place: 'U1.131, NBZ', cost: 'Free', provisional: false,
+      who: 'The career lecture team: Stefania Battaglioni, Laura Maria de Smalen, Fine Dietrich, Jan Bolten and Gabrielè Sakalauskaitè',
       blurb: 'What people with a doctorate in the life sciences actually go on to do.',
-      body: ['Announced on the shared site at the time.'],
+      body: [
+        'Held on Monday 20 September 2021 at 17:30 in U1.131, NBZ, with an apéro afterwards. Room capacity was limited so seats were reserved in advance, though it was also possible to turn up on the evening.'
+      ],
       signupNote: 'This event has passed.', signupLabel: 'Original announcement',
       signupHref: 'https://phdstudents.biozentrum.unibas.ch/career-lecture-modern-career-pathways/'
     },
     {
-      id: 'project-management-2021', series: 'Career', title: 'Project Management Course for Researchers', date: '2021-02-25',
-      time: '', place: '', who: 'The career events team', cost: 'Free', provisional: false,
+      id: 'project-management-2021', series: 'Career', title: 'Project Management Course for Researchers', date: '2021-04-09',
+      time: '17:00 to 19:00, on 9, 16, 23 and 30 April', place: 'Online webinar', provisional: false,
+      who: 'Taught by Dimitrije Krstic. Natalie Bärland and Vishwachi Tripathi took the questions.',
+      cost: 'Free, and worth 1 ECTS on completing the follow-up assignments',
       blurb: 'A practical course on running a research project like a project.',
-      body: ['Announced on the shared site at the time.'],
+      body: [
+        'Four webinar sessions with four consecutive exercises, identical to the transferable skills course and offered only to PhD students of the Biozentrum and the Department of Pharmaceutical Sciences. Places were limited and went first come, first served.',
+        'Registration opened on 2 March 2021 and closed on 5 March.'
+      ],
       signupNote: 'This event has passed.', signupLabel: 'Original announcement',
       signupHref: 'https://phdstudents.biozentrum.unibas.ch/project-management-course-for-researchers/'
     },
     {
-      id: 'info-event-2021', series: 'Career', title: 'Info Event — University resources for students and employees', date: '2021-02-25',
-      time: '', place: '', who: 'The board', cost: 'Free', provisional: false,
+      id: 'info-event-2021', series: 'Career', title: 'Info Event — University resources for students and employees', date: '2021-03-01',
+      time: '17:30', place: 'Zoom', who: 'The representatives, with the university offices themselves', cost: 'Free', provisional: false,
       blurb: 'What the university already offers you, and where it is hidden.',
-      body: ['Announced on the shared site at the time.'],
+      body: [
+        'Held on 1 March 2021 at 17:30 on Zoom, with the coordination offices for Training and Development, National and International Cooperation and Personal Integrity, the Student Advice Center and the Center for Psychotherapy, for everyone employed at the Biozentrum or the Pharmazentrum.'
+      ],
       signupNote: 'This event has passed.', signupLabel: 'Original announcement',
       signupHref: 'https://phdstudents.biozentrum.unibas.ch/info-event-university-resources-for-students-and-employees/'
     },
     {
       id: 'female-career-2020', series: 'Career', title: 'Female Career Development Programs', date: '2020-12-10',
-      time: '', place: '', who: 'The career events team', cost: 'Free', provisional: false,
+      time: '', place: 'Zoom', cost: 'Free', provisional: false, announcedOnly: true,
+      who: 'The career lecture team: Butrint Aliu, Đorđe Relić, Fine Dietrich and Giulia Di Bartolomei',
       blurb: 'The programmes available at the university, and how to get onto them.',
-      body: ['Announced on the shared site at the time.'],
+      body: [
+        'The career lecture series returned at the end of 2020 with a look at the programmes that support women in science: which exist, what they offer and how they differ. All genders were welcome.',
+        'The announcement went up on 10 December 2020 and does not say which day the lecture was.'
+      ],
       signupNote: 'This event has passed.', signupLabel: 'Original announcement',
       signupHref: 'https://phdstudents.biozentrum.unibas.ch/female-career-development-programs/'
     },
     {
       id: 'science-lunch-2020', series: 'Science Lunch', title: 'PhD Science Lunch', date: '2020-03-02',
       time: '12:00', place: 'Biozentrum, Science Lounge', who: 'The organisers', cost: 'Free', provisional: false,
+      announcedOnly: true,
       blurb: 'A past edition of the monthly Science Lunch.',
-      body: ['Announced on the shared site at the time.'],
+      body: ['The shared site posted this on 2 March 2020 and does not say which day the lunch itself was.'],
       signupNote: 'This event has passed.', signupLabel: 'Original announcement',
       signupHref: 'https://phdstudents.biozentrum.unibas.ch/phd-science-lunch/'
     }
@@ -1432,6 +1451,7 @@ class Component extends DCLogic {
 
   // every edition since the first one, newest first, exactly as the retreat site listed them
   RETREAT_HISTORY = [
+    { year: '2026', place: 'Locarno-Muralto' },
     { year: '2025', place: 'St. Gallen' }, { year: '2024', place: 'Kandersteg' },
     { year: '2023', place: 'Davos' }, { year: '2022', place: 'Davos' },
     { year: '2021', place: 'Basel, online' }, { year: '2020', place: 'Cancelled, Covid-19' },
@@ -1529,6 +1549,7 @@ class Component extends DCLogic {
     const d = this.d(ev.date);
     return Object.assign({}, ev, {
       route: '#/events/' + ev.id,
+      announcedOnly: !!ev.announcedOnly,
       color: this.SERIES_COLOR[ev.series] || '#5d6cc3',
       dayNum: String(d.getDate()),
       monthShort: d.toLocaleDateString('en-GB', { month: 'short' }),
@@ -1536,6 +1557,7 @@ class Component extends DCLogic {
       dateShort: d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }),
       yearLabel: String(d.getFullYear()),
       whenLabel: this.long(ev.date) + (ev.time ? ' · ' + ev.time : ''),
+      whenHeading: ev.announcedOnly ? 'Announced' : 'When',
       metaLine: [ev.time, ev.place].filter(Boolean).join(' · ')
     });
   }
@@ -1545,7 +1567,7 @@ class Component extends DCLogic {
       route: '#/events/' + a.id,
       color: this.SERIES_COLOR[a.series] || '#5d6cc3',
       recurring: true,
-      dateShort: a.cadence, dayMonth: a.cadence, whenLabel: a.cadence, time: '',
+      dateShort: a.cadence, dayMonth: a.cadence, whenLabel: a.cadence, time: '', whenHeading: 'When',
       provisional: false,
       metaLine: [a.cadence, a.place].filter(Boolean).join(' · ')
     });

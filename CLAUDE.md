@@ -102,9 +102,9 @@ Hash routing, parsed at lines 975 to 980, re-read on every `hashchange`.
 |---|---|
 | `#/` | Home |
 | `#/events` | Calendar, with Show and Series filters |
-| `#/events/<id>` | One event, 14 ids defined in `EVENTS` |
+| `#/events/<id>` | One event or standing activity, by id from `EVENTS` or `STANDING` |
 | `#/people` | Board, delegates, and a collapsible alumni list |
-| `#/news` | Nine dated entries, all outbound links |
+| `#/news` | The LinkedIn index, then the shared site's archive; all outbound links |
 | `#/resources` | Four themed cards plus the confidential routes |
 | `#/retreat` | The PhD Retreat, in full: what it is, taking part, gallery, committee, sponsors, past editions |
 | `#/merch` | The hoodie |
@@ -140,6 +140,24 @@ Every dataset is a constant on the class in `docs/index.html`:
 
 The retreat constants carry no line numbers because they are new and the numbers
 above are already drifting; grep for the name instead.
+
+**An event's date is the day it happened, never the day it was announced.**
+The seven archived entries originally took their date from the shared site's news
+feed, which is a publication date, and four of them were wrong by days or weeks:
+the 2023 retreat ran 7 to 9 September and was written up on 9 October; the career
+lecture was announced on 8 September for the 20th; the project management webinar
+was announced in February for four Fridays in April; the info event was announced
+on 25 February for 1 March. Each announcement says so in its own body text, so
+**read the body before trusting a feed date.** The three that genuinely publish no
+event date carry `announcedOnly: true`, which changes the detail page's date
+heading from "When" to "Announced" and adds a line saying so. `ARCHIVE` is a news
+feed and its dates are publication dates by design; the news page says as much, so
+the two pages disagreeing about the 2023 retreat is correct rather than a bug.
+
+Anything derived from a LinkedIn post date is an inference about the post, not
+about the event: a post saying "one week to go" dates the announcement, and the
+entry should say that rather than assert a month for the event. The news headings
+are ours, because a LinkedIn post has no title, and the news page says so.
 
 **`STANDING` versus `EVENTS` is the important distinction.** Almost nothing the
 representatives run has a published date: the Science Lunch, the Apéro, the BBQ
